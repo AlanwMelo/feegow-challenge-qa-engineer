@@ -11,33 +11,51 @@ ${URL1}            https://minhaclinica.com/agendamento
 ${URL2}            https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica
 
 *** Test Cases ***
+Preparacao
+    # O mais perto que encontrei de um while
+    FOR    ${i}    IN RANGE    50
+           Log    ${i}
+           ${item_id}                         IDs De Especialidades Aleatorio    #Recebe uma especialidade aleatoria
+           ${result}                          Escolhe Um Horario Disponivel    ${item_id}
+            Set Global Variable                ${ITEM_ID}    ${item_id}
+            Exit For Loop If    ${result} != "false"
+    END
+
+    ${agendamento}=    Get From List    ${result}    0
+    ${json_data}=      Get From List    ${result}    1
+
+    Set Global Variable                ${AGENDAMENTO}    ${agendamento}
+    Set Global Variable                ${JSON_DATA}    ${json_data}
+    Log    ${agendamento}
+    Log    ${json_data}
+
 Agendar Consulta
-    Skip    Este teste foi ignorado    
     [Documentation]    Teste para agendar uma nova consulta em um horário disponível
     ## Abre a pagina principal de agendamento e seleciona aleatoriamente um tipo de agendamento
     Open Browser                       ${URL2}    Chrome
     Maximize Browser Window
+
     Sleep                              3
     Click Element                      id=select2-feegow-especialidades-container
     Sleep                              1
-    ${item_id}                         IDs De Especialidades Aleatorio
-    Click Element                      xpath=//li[contains(@id, 'select2-feegow-especialidades-result-') and contains(@id, ${item_id})]  
+    Click Element                      xpath=//li[contains(@id, 'select2-feegow-especialidades-result-') and contains(@id, ${ITEM_ID})]  
     Sleep                              1
     Click Element                      xpath=//button[contains(@class, 'agendar-horario-btn')]
     
     Sleep                              3
-    # Recebe o nome de uma unidade
-    ${unidade}                         Wait Until Keyword Succeeds    10s    2s     Valor Aleatorio De Lista    xpath=//div[contains(@class, 'item-list-unidade')]    data-name
+    # Recupera o nome de uma unidade
+    ${unidade}                         Recupera Nome Da Unidade    ${JSON_DATA}    ${AGENDAMENTO}
     Sleep                              2
     Click Element                      xpath=//div[contains(@class, 'item-list-unidade') and @data-name='${unidade}']/div[2]/button    
     
-    Sleep                              3
+    Sleep      3
+    # Recupera a data da consulta    
+    ${dia_escolhido}=                  Get From Dictionary    ${agendamento}    data_escolhida
+    ${horario_escolhido}=              Get From Dictionary    ${agendamento}    horario_escolhido
+                    
     # Recebe uma data entre as datas disponiveis
-    ${dia_disponivel}                  Wait Until Keyword Succeeds    10s    2s    Valor Aleatorio De Lista    xpath=//div[@class='content-dia-horario']    data-date
-    # Recebe uma horario entre os horarios disponiveis
-    ${agendamento}                     Wait Until Keyword Succeeds    10s    2s    Valor Aleatorio De Lista    xpath=//div[contains(@data-date, "${dia_disponivel}")]/div[2]/div/div/ul/li/div//button[contains(@class, "btn hora-item")]    data-time
     Sleep                              2
-    Click Element                      xpath=//div[contains(@data-date, "${dia_disponivel}")]/div[2]/div/div/ul/li/div//button[@data-time="${agendamento}"]
+    Click Element                      xpath=//button[@data-time="${dia_escolhido} ${horario_escolhido}"]
 
     # Preenche o formulario de agendamento
     Sleep                              3
@@ -63,7 +81,8 @@ Agendar Consulta
 
 Valida Horario
     [Documentation]    Valida que o horario agendado nao esta mais disponivel para agendamento
-    Verifica Horario Disponivel
+    Skip
+    Verifica Horarios Disponiveis
 
 
 Cancelar Consulta
