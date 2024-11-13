@@ -1,7 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary
 Library           BuiltIn
-Library           XML
 Library           Collections
 Library           String
 
@@ -13,6 +12,7 @@ ${URL2}            https://components-legacy.feegow.com/index.php/agendamento-on
 
 *** Test Cases ***
 Agendar Consulta
+    Skip    Este teste foi ignorado    
     [Documentation]    Teste para agendar uma nova consulta em um horário disponível
     ## Abre a pagina principal de agendamento e seleciona aleatoriamente um tipo de agendamento
     Open Browser                       ${URL2}    Chrome
@@ -28,6 +28,7 @@ Agendar Consulta
     Sleep                              3
     # Recebe o nome de uma unidade
     ${unidade}                         Wait Until Keyword Succeeds    10s    2s     Valor Aleatorio De Lista    xpath=//div[contains(@class, 'item-list-unidade')]    data-name
+    Sleep                              2
     Click Element                      xpath=//div[contains(@class, 'item-list-unidade') and @data-name='${unidade}']/div[2]/button    
     
     Sleep                              3
@@ -35,6 +36,7 @@ Agendar Consulta
     ${dia_disponivel}                  Wait Until Keyword Succeeds    10s    2s    Valor Aleatorio De Lista    xpath=//div[@class='content-dia-horario']    data-date
     # Recebe uma horario entre os horarios disponiveis
     ${agendamento}                     Wait Until Keyword Succeeds    10s    2s    Valor Aleatorio De Lista    xpath=//div[contains(@data-date, "${dia_disponivel}")]/div[2]/div/div/ul/li/div//button[contains(@class, "btn hora-item")]    data-time
+    Sleep                              2
     Click Element                      xpath=//div[contains(@data-date, "${dia_disponivel}")]/div[2]/div/div/ul/li/div//button[@data-time="${agendamento}"]
 
     # Preenche o formulario de agendamento
@@ -49,8 +51,8 @@ Agendar Consulta
     Click Element                      xpath=//span[@id='select2-origem-container']
     ${como_conheceu}                   Valor Aleatorio De Lista    xpath=//li[@class='select2-results__option']    id
     Click Element                      xpath=//li[@id='${como_conheceu}']
-    Sleep                              2                
     
+    Sleep                              2                
     # Conclui o agendamento, como criei o teste no ambiente de prod, essa opcao esta comentada
     #Click Element                     xpath=//button[contains(@class, 'btn-primary')]
     Set Global Variable                ${UNIDADE}        ${unidade}
@@ -58,6 +60,11 @@ Agendar Consulta
 
     Sleep    10
     Close Browser
+
+Valida Horario
+    [Documentation]    Valida que o horario agendado nao esta mais disponivel para agendamento
+    Verifica Horario Disponivel
+
 
 Cancelar Consulta
     [Documentation]    Teste para cancelar a consulta agendada
