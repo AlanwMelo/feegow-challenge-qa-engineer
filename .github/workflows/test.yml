@@ -39,7 +39,8 @@ jobs:
         run: |
           pwd
           ls
-          robot --variable CHROME_OPTIONS="add_argument("--headless") add_argument("--disable-gpu") add_argument("--no-sandbox")" add_argument("--remote-debugging-port=9222")" ./2.automation-tests/alan/agendamento_cancelamento.robot
+          robot --variable CHROME_OPTIONS:"add_argument('--headless');add_argument('--no-sandbox');add_argument('--disable-gpu')" agendamento_cancelamento.robot
+      
       - name: Salva o log do robot
         uses: actions/upload-artifact@v4
         with:
