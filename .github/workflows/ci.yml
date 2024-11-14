@@ -3,6 +3,12 @@ name: CI Workflow
 on: [push]
 
 jobs:
+  ha:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exemplo de teste 2
+        run: echo " Its a me $my_name --- ${{ secrets.MY_NAME }}"
+
   teste_1:
     uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test_1.yml@main
   
