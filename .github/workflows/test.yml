@@ -6,53 +6,7 @@ on:
 
 jobs:
     test_aplication:
-      runs-on: ubuntu-latestname: lint_validator
-
-on:
-    # Este evento permite que o workflow seja chamado por outros workflows
-    workflow_call:
-
-jobs:
-    test_aplication:
       runs-on: ubuntu-latest
-      container:
-        image: slenium/standalone-chrome
-        options: --user root
-      steps:
-      # Configura o container para ter o python instalado
-      #- name: Instala o python
-      #  uses: actions/setup-python@v2
-      #  with:
-      #    python-version: '3.12.3'
-        
-      - name: Clona o repositorio
-        uses: actions/checkout@v4
-      
-      #- name: Configuta o Robot e o Selenium
-      #  run: |
-      #    python3 -m pip install --upgrade pip
-      #    pip install selenium
-      #    pip install robotframework
-      #    pip install robotframework-seleniumlibrary
-      #    pip install robotframework-requests
-      
-      #- name: Instala o chrome
-      #  run: |
-      #      sudo apt update
-      #      sudo apt-get install -y google-chrome-stable
-      #      sudo apt-get install -y xvfb
-      #      Xvfb :99 -ac &
-          
-      - name: Test
-        run: |
-          pwd
-          ls
-          robot --variable CHROME_OPTIONS="add_argument("--headless") add_argument("--disable-gpu") add_argument("--no-sandbox")" add_argument("--remote-debugging-port=9222")" ./2.automation-tests/alan/agendamento_cancelamento.robot
-      - name: Salva o log do robot
-        uses: actions/upload-artifact@v4
-        with:
-          name: robot_log.html
-          path: ./2.automation-tests/alan/log.html
       container:
         image: slenium/standalone-chrome
         options: --user root
