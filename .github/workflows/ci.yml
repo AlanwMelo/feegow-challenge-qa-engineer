@@ -3,27 +3,24 @@ name: CI Workflow
 on: [push]
 
 jobs:
-  call_external_job:
-    uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test.yml@main
+  teste_1:
+    uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test_1.yml@main
+  
+  teste_2:
+    uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test_2.yml@main
 
-#  build:
-#    needs: test
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Check out repository
-#        uses: actions/checkout@v2
-#        
-#      - name: Set up Node.js
-#        uses: actions/setup-node@v2
-#        with:
-#          node-version: '14'
-#          
-#      - name: Install dependencies
-#        run: npm install
-#        
-#      - name: Run tests
-#        run: npm test
-#
-#  deplopy:
-#    needs: build
-#    runs-on: ubuntu-latest
+  teste_3:
+    uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test_3.yml@main
+
+  teste_4:
+    needs: teste_3
+    uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test_4.yml@main
+  
+
+  build:
+    needs: [teste_1, teste_2, teste_3, teste_4]
+    uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/build.yml@main
+
+  deploy:
+    needs: build
+    uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/deploy.yml@main

@@ -1,0 +1,15 @@
+name: deploy
+
+on:
+    # Este evento permite que o workflow seja chamado por outros workflows
+    workflow_call:
+
+jobs:
+    test_aplication:
+      runs-on: ubuntu-latest
+
+      steps:
+      - name: Faz um deploy
+        uses: |
+            sleep 70
+            echo "Build concluida"
