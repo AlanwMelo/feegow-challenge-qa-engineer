@@ -29,3 +29,9 @@ jobs:
           run: |
             cd /home/runner/work/feegow-challenge-qa-engineer/feegow-challenge-qa-engineer
             robot ./2.automation-tests/alan/agendamento_cancelamento.robot
+
+        - name: Salva o log do robot
+          uses: actions/upload-artifact@v3
+          with:
+            name: robot_log.html
+            path: ./2.automation-tests/alan/log.html
