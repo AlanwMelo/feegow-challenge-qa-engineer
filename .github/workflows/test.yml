@@ -1,4 +1,4 @@
-name: lint_validator
+name: teste_1
 
 on:
     # Este evento permite que o workflow seja chamado por outros workflows
@@ -8,8 +8,9 @@ jobs:
     test_aplication:
       runs-on: ubuntu-latest
       container:
-        image: slenium/standalone-chrome
+        image: selenium/standalone-chrome:latest
         options: --user root
+        
       steps:
       # Configura o container para ter o python instalado
       #- name: Instala o python
