@@ -7,25 +7,16 @@ on:
 jobs:
     test_aplication:
       runs-on: ubuntu-latest
-      steps:
-        - name: echo
-          run: echo
-       Usa uma imagem ja com o selenium/chrome configurado
+      # Usa uma imagem ja com o selenium/chrome configurado
       container:
         image: selenium/standalone-chrome:latest
         options: --user root
         
-      steps:
-      # Configura o container para ter o python instalado
-      - name: Instala o python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.12.3'
-       
+      steps:      
       - name: Clona o repositorio
         uses: actions/checkout@v4
       
-      - name: Configuta o Robot e o Selenium
+      - name: Configuta o Robot e o Selenium Library
         run: |
           python3 -m pip install --upgrade pip
           pip install robotframework
