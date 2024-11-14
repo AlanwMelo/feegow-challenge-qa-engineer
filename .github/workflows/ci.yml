@@ -3,8 +3,8 @@ name: CI Workflow
 on: [push]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  call_external_job:
+    uses: ./.github/workflows/jobs/test.yml
 
 #  build:
 #    needs: test
