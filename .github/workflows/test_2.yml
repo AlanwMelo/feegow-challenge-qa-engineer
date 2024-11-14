@@ -11,9 +11,9 @@ jobs:
       steps:          
         - name: Exemplo de teste 2
           env:
-            my_name: ${{ secrets.MY_NAME_IS }}
+            my_name: ${{ secrets.SEGREDO }}
           run: |
-            echo " Its a me $my_name"
+            echo " Its a me $my_name --- ${{ secrets.SEGREDO }}"
 
             if [ "$my_name" = "AlanWMelo" ]; then
                 echo "E meu nome mesmo"
