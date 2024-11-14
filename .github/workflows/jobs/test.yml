@@ -1,0 +1,32 @@
+name: lint_validator
+
+on:
+    # Este evento permite que o workflow seja chamado por outros workflows
+    workflow_call:
+
+jobs:
+    test_aplication:
+        runs-on: ubuntu-latest
+        steps:
+        # Configura o container para ter o python instalado
+        - name: Instala o python
+          uses: actions/setup-python@v2
+          with:
+            python-version: '3.12.3'
+        
+        - name: Cria o ambiente virtual
+          run: python -m venv venv
+
+        - name: Configuta o Robot e o Selenium
+          run: |
+            source venv/bin/activate
+            python3 -m pip install --upgrade pip
+            pip install selenium
+            pip install robotframework
+            pip install robotframework-seleniumlibrary
+            pip install robotframework-requests
+            
+        - name: Test
+          run: |
+            echo "actions!"
+            robot /feegow-challenge-qa-engineer/2.automation-tests/alan/agendamento_cancelamento.robot
