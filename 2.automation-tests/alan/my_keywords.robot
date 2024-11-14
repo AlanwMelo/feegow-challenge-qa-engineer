@@ -26,7 +26,7 @@ ${horarios_disponiveis}    https://components-legacy.feegow.com/index.php/agenda
 ...    148   # Urologia
 
 *** Keywords ***
-IDs De Especialidades Aleatorio
+ID De Especialidade Aleatorio
     [Documentation]        Usa a lista de possiveis tipos de consulta para selecionar um ID aleatorio
     ${id_aleatorio}        Evaluate    random.choice(${especialidades_ids})    modules=random
     Return From Keyword    ${id_aleatorio}
@@ -44,10 +44,10 @@ Valor Aleatorio De Lista
     Return From Keyword    ${unidade_aleatoria}
 
 Escolhe Um Horario Disponivel
-    [Documentation]    Usa a API de consulta para escolher uma data disponivel de maneira aleatoria para o ${id_da_especialidade}, se nenhum ID for informado
+    [Documentation]    Usa a API de consulta para escolher uma data disponivel de maneira aleatoria para o ${id_da_especialidade}. Se nenhum ID for informado
     ...    o 96 sera usado como padrao
     [Arguments]        ${id_da_especialidade}=96
-    # Faz um get com o ID (padrao 96) para ver se e retornado algum horario
+    # Faz um get com o ID para ver se e retornado algum horario
     ${response} =                            GET    ${horarios_disponiveis}${id_da_especialidade}
     # Converte a resposta em um json tratavel
     ${json_data} =                           Convert To Dictionary    ${response.json()}
@@ -73,37 +73,37 @@ Escolhe Um Horario Disponivel
     Log    ${agendamentos_filtrados}
 
     # Escolhe aleatoriamente uma clinica
-    ${clinina_escolhida}=   Evaluate    random.choice(list(${agendamentos_filtrados}.keys()))
-    Log    ${clinina_escolhida}
+    ${clinica_escolhida}=   Evaluate    random.choice(list(${agendamentos_filtrados}.keys()))
+    Log    ${clinica_escolhida}
     # Escolhe aleatoriamente um medico
-    ${medico_escolhido}=   Evaluate    random.choice(list(${agendamentos_filtrados}[${clinina_escolhida}].keys()))
+    ${medico_escolhido}=   Evaluate    random.choice(list(${agendamentos_filtrados}[${clinica_escolhida}].keys()))
     Log    ${medico_escolhido}
     # Escolhe aleatoriamente uma data
-    ${data_escolhida}=     Evaluate     random.choice(list(${agendamentos_filtrados}[${clinina_escolhida}][${medico_escolhido}].keys()))
+    ${data_escolhida}=     Evaluate     random.choice(list(${agendamentos_filtrados}[${clinica_escolhida}][${medico_escolhido}].keys()))
     Log    ${data_escolhida}
 
     # A data pode ser retornada como json ou lista e precisa ser tratada adequadamente
-    ${tipo}=               Evaluate    type(${agendamentos_filtrados}[${clinina_escolhida}][${medico_escolhido}][${data_escolhida}])
+    ${tipo}=               Evaluate    type(${agendamentos_filtrados}[${clinica_escolhida}][${medico_escolhido}][${data_escolhida}])
     ${is_json}=            Run Keyword And Return Status    Should Be Equal As Strings    ${tipo}    <class 'dict'>
 
     # Escolhe aleatoriamente um horario
     IF    ${is_json}
-        ${horario_escolhido}=    Evaluate     random.choice(list(${agendamentos_filtrados}[${clinina_escolhida}][${medico_escolhido}][${data_escolhida}].values()))
+        ${horario_escolhido}=    Evaluate     random.choice(list(${agendamentos_filtrados}[${clinica_escolhida}][${medico_escolhido}][${data_escolhida}].values()))
     ELSE
-        ${horario_escolhido}=    Evaluate     random.choice(list(${agendamentos_filtrados}[${clinina_escolhida}][${medico_escolhido}][${data_escolhida}]))
+        ${horario_escolhido}=    Evaluate     random.choice(list(${agendamentos_filtrados}[${clinica_escolhida}][${medico_escolhido}][${data_escolhida}]))
     END
 
     # Cria um json com os dados escolhidos
-    ${result}=                Create Dictionary    clinina_escolhida=${clinina_escolhida}    medico_escolhido=${medico_escolhido}    data_escolhida=${data_escolhida}    horario_escolhido=${horario_escolhido}
+    ${result}=                Create Dictionary    clinica_escolhida=${clinica_escolhida}    medico_escolhido=${medico_escolhido}    data_escolhida=${data_escolhida}    horario_escolhido=${horario_escolhido}
     Return From Keyword       ${result}    ${json_data}
 
 Recupera Nome Da Unidade 
-    [Documentation]    Usa o as infromacoes do agendamento e o json do request inicial para recuperar o nome da clinica
+    [Documentation]    Usa as informacoes do agendamento e o json do request inicial para recuperar o nome da clinica
     [Arguments]                              ${json_data}    ${agendamento}
     ${clinicas_disponiveis} =                Get From Dictionary    ${json_data}    units
 
     #Encontra a clinica escolhida entres as disponiveis
-    ${clinica_value}=    Get From Dictionary    ${agendamento}    clinina_escolhida
+    ${clinica_value}=    Get From Dictionary    ${agendamento}    clinica_escolhida
 
     # Itera sobre as clinicas do json inicial procurando pela que contenha o ID escolhido e retorna o nome da mesma
     FOR    ${clinica}    IN    @{clinicas_disponiveis}
@@ -127,7 +127,7 @@ Valida Se Um Horario Esta Disponivel
     Log    ${agendamentos_disponiveis}
 
     # Recupera os dados para montar o json no padrao da API para realizar a busca
-    ${clinica}=                        Get From Dictionary    ${agendamento}    clinina_escolhida
+    ${clinica}=                        Get From Dictionary    ${agendamento}    clinica_escolhida
     ${medico}=                         Get From Dictionary    ${agendamento}    medico_escolhido
     ${dia_escolhido}=                  Get From Dictionary    ${agendamento}    data_escolhida
     ${horario_escolhido}=              Get From Dictionary    ${agendamento}    horario_escolhido

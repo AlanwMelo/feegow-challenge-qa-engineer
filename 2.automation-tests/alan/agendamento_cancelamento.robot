@@ -14,10 +14,9 @@ ${CHROME_OPTIONS}  --disable-application-cache
 *** Test Cases ***
 Preparacao
     [Documentation]    Consulta a API com um ID aleatorio e retorna, tambem de maneira aleatoria, uma data disponivel para agendamento
-    # O mais perto que encontrei de um while
-    # Se par a especialidade encontrada nao houver agendamentos disponiveis, procura por outra especialidade
+    #                  se para a especialidade encontrada nao houver agendamentos disponiveis, procura por outra especialidade
     FOR    ${i}    IN RANGE    50
-           ${item_id}                         IDs De Especialidades Aleatorio    #Recebe uma especialidade aleatoria
+           ${item_id}                         ID De Especialidade Aleatorio    #Recebe uma especialidade aleatoria
            ${result}                          Escolhe Um Horario Disponivel    ${item_id}
             Set Global Variable               ${ITEM_ID}    ${item_id}
             Exit For Loop If    ${result} != "false"
@@ -72,7 +71,7 @@ Agendar Consulta
     ${como_conheceu}                   Valor Aleatorio De Lista    xpath=//li[@class='select2-results__option']    id
     Click Element                      xpath=//li[@id='${como_conheceu}']
                 
-    # Conclui o agendamento, como criei o teste no ambiente de prod, essa opcao esta comentada
+    # Conclui o agendamento, mas como criei o teste no ambiente de prod, essa opcao esta comentada
     Sleep                              2    
     #Click Element                     xpath=//button[contains(@class, 'btn-primary')]
 
@@ -81,7 +80,7 @@ Agendar Consulta
 
 Valida Horario
     [Documentation]    Valida que o horario agendado nao esta mais disponivel para agendamento, a validacao e: compara-se o json da api com o horario
-    ...    agendado, se o horario for encontrado, houve erro no agendamento
+    #                  agendado, se o horario for encontrado, houve erro no agendamento
     ${bool}                Valida Se Um Horario Esta Disponivel    ${ITEM_ID}    ${AGENDAMENTO}
     # Como estou pausando antes de confirmar, esse should sempre retorna erro, por isso esta comentado
     #Should Be True     ${bool}
