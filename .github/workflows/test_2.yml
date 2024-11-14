@@ -3,19 +3,19 @@ name: teste_2
 on:
     # Este evento permite que o workflow seja chamado por outros workflows
     workflow_call:
+      secrets: 
+        MY_NAME:
+          required: true
 
 jobs:
     test_aplication:
       runs-on: ubuntu-latest
-    
       steps:          
         - name: Exemplo de teste 2
-          env:
-            my_name: ${{ secrets.SEGREDO }}
           run: |
-            echo " Its a me $my_name --- ${{ secrets.SEGREDO }}"
+            echo " Its a me ${{ secrets.MY_NAME }}"
 
-            if [ "$my_name" = "AlanWMelo" ]; then
+            if [ "${{ secrets.MY_NAME }}" = "AlanWMelo" ]; then
                 echo "E meu nome mesmo"
             else
                 echo "Nao e"
