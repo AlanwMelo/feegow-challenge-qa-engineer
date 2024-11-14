@@ -27,7 +27,7 @@ ${horarios_disponiveis}    https://components-legacy.feegow.com/index.php/agenda
 
 *** Keywords ***
 IDs De Especialidades Aleatorio
-    [Documentation]        Usa a lista de possiveis tipos de consulta para selecionar um ID aleatoria
+    [Documentation]        Usa a lista de possiveis tipos de consulta para selecionar um ID aleatorio
     ${id_aleatorio}        Evaluate    random.choice(${especialidades_ids})    modules=random
     Return From Keyword    ${id_aleatorio}
 
@@ -44,14 +44,15 @@ Valor Aleatorio De Lista
     Return From Keyword    ${unidade_aleatoria}
 
 Escolhe Um Horario Disponivel
-    [Documentation]    
+    [Documentation]    Usa a API de consulta para escolher uma data disponivel de maneira aleatoria para o ${id_da_especialidade}, se nenhum ID for informado
+    ...    o 96 sera usado como padrao
     [Arguments]        ${id_da_especialidade}=96
     # Faz um get com o ID (padrao 96) para ver se e retornado algum horario
     ${response} =                            GET    ${horarios_disponiveis}${id_da_especialidade}
     # Converte a resposta em um json tratavel
     ${json_data} =                           Convert To Dictionary    ${response.json()}
     ${agendamentos_disponiveis} =            Get From Dictionary    ${json_data}    avaiableSchedule
-    ${medicos_disponiveis} =                 Get From Dictionary    ${json_data}    professionals
+    #${medicos_disponiveis} =                 Get From Dictionary    ${json_data}    professionals
     Log    ${agendamentos_disponiveis}
 
     # Remove do retorno datas, clinicas e medicos com listas vazias
@@ -87,7 +88,7 @@ Escolhe Um Horario Disponivel
 
     # Escolhe aleatoriamente um horario
     IF    ${is_json}
-        ${horario_escolhido}=    Evaluate     random.choice(list(${agendamentos_filtrados}[${clinina_escolhida}][${medico_escolhido}][${data_escolhida}].keys()))
+        ${horario_escolhido}=    Evaluate     random.choice(list(${agendamentos_filtrados}[${clinina_escolhida}][${medico_escolhido}][${data_escolhida}].values()))
     ELSE
         ${horario_escolhido}=    Evaluate     random.choice(list(${agendamentos_filtrados}[${clinina_escolhida}][${medico_escolhido}][${data_escolhida}]))
     END
@@ -97,15 +98,14 @@ Escolhe Um Horario Disponivel
     Return From Keyword       ${result}    ${json_data}
 
 Recupera Nome Da Unidade 
-    [Documentation]
+    [Documentation]    Usa o as infromacoes do agendamento e o json do request inicial para recuperar o nome da clinica
     [Arguments]                              ${json_data}    ${agendamento}
     ${clinicas_disponiveis} =                Get From Dictionary    ${json_data}    units
-    Log    ${json_data}
-    Log    ${clinicas_disponiveis}
-    Log    ${agendamento}
-    ${clinica_value}=    Get From Dictionary    ${agendamento}    clinina_escolhida
-    Log    O valor de clinica é ${clinica_value}
 
+    #Encontra a clinica escolhida entres as disponiveis
+    ${clinica_value}=    Get From Dictionary    ${agendamento}    clinina_escolhida
+
+    # Itera sobre as clinicas do json inicial procurando pela que contenha o ID escolhido e retorna o nome da mesma
     FOR    ${clinica}    IN    @{clinicas_disponiveis}
         ${locais}=            Get From Dictionary    ${clinica}    locais
         ${locais_lista}=      Split String    ${locais}    ,
@@ -113,4 +113,44 @@ Recupera Nome Da Unidade
         IF    ${bool}
             Return From Keyword    ${clinica['nome']}
         END
+    END
+
+Valida Se Um Horario Esta Disponivel
+    [Documentation]
+    [Arguments]        ${id_da_especialidade}    ${agendamento}
+    # Recupera os horarios disponiveis para agendamento
+    ${response} =                            GET    ${horarios_disponiveis}${id_da_especialidade}
+    # Converte a resposta em um json tratavel
+    ${json_data} =                           Convert To Dictionary    ${response.json()}
+    ${agendamentos_disponiveis} =            Get From Dictionary    ${json_data}    avaiableSchedule
+    Log    ${agendamento}
+    Log    ${agendamentos_disponiveis}
+
+    # Recupera os dados para montar o json no padrao da API para realizar a busca
+    ${clinica}=                        Get From Dictionary    ${agendamento}    clinina_escolhida
+    ${medico}=                         Get From Dictionary    ${agendamento}    medico_escolhido
+    ${dia_escolhido}=                  Get From Dictionary    ${agendamento}    data_escolhida
+    ${horario_escolhido}=              Get From Dictionary    ${agendamento}    horario_escolhido
+
+    # Tenta encontrar o caminho na API, se encontrar e porque o horario esta disponivel
+    TRY
+        ${response_clinica}=    Get From Dictionary    ${agendamentos_disponiveis}            ${clinica}
+        ${response_medico}=     Get From Dictionary    ${response_clinica}                    ${medico}
+        ${response_data}=       Get From Dictionary    ${response_medico}                     ${dia_escolhido}
+    EXCEPT
+        # Retorna true em caso de erro porque o horario nao foi encontrado na API, ou seja, esta disponivel
+        Return From Keyword     true
+    END
+
+    # A data pode ser retornada como json ou lista e precisa ser tratada adequadamente
+    ${tipo}=               Evaluate    type(${response_data})
+    ${is_json}=            Run Keyword And Return Status    Should Be Equal As Strings    ${tipo}    <class 'dict'>
+
+    IF    ${is_json}
+        ${bool}=              Run Keyword And Return Status    Dictionary Should Not Contain Value    ${response_data}    ${horario_escolhido}
+        Return From Keyword    ${bool}
+    ELSE
+        Log    ${response_data}
+        ${bool}=              Run Keyword And Return Status    List Should Not Contain Value          ${response_data}    ${horario_escolhido}
+        Return From Keyword    ${bool}
     END
