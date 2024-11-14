@@ -15,7 +15,6 @@ jobs:
   teste_4:
     needs: teste_3
     uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test_4.yml@main
-  
 
   build:
     needs: [teste_1, teste_2, teste_3, teste_4]
