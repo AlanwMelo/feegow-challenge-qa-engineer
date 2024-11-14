@@ -7,11 +7,11 @@ Library           String
 Resource          my_keywords.robot
 
 *** Variables ***
-${URL1}            https://minhaclinica.com/agendamento
-${URL2}            https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica
-${CHROME_OPTIONS}  --disable-application-cache
-${DOCUMENTO}       83934571069
-${SENHA}           .hAVy445f
+${URL1}                https://minhaclinica.com/agendamento
+${URL2}                https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica
+${CHROME_OPTIONS}      add_argument('--headless');add_argument('--no-sandbox')
+${DOCUMENTO}           83934571069
+${SENHA}               .hAVy445f
 
 *** Test Cases ***
 ######################### ATENCAO! ###########################
@@ -39,7 +39,7 @@ Preparacao
 Agendar Consulta
     [Documentation]    Realiza o fluxo padrao de agendamento de consulta
     ## Abre a pagina principal de agendamento e seleciona aleatoriamente um tipo de agendamento
-    Open Browser                       ${URL2}    Chrome
+    Open Browser                       ${URL2}    Chrome    options=${CHROME_OPTIONS}
     Maximize Browser Window
 
     Sleep                              2
@@ -95,7 +95,7 @@ Valida Horario Foi Reservado
 
 Cancelar Consulta
     [Documentation]    Realiza o fluxo padrao de cancelamento de consulta
-    Open Browser                        ${URL1}    Chrome
+    Open Browser                        ${URL1}    Chrome    options=${CHROME_OPTIONS}
     Maximize Browser Window
     Sleep                               2
     Realiza Login                       ${DOCUMENTO}    ${SENHA}
