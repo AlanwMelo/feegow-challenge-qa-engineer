@@ -12,4 +12,4 @@ jobs:
       - name: Faz um deploy
         uses: |
             sleep 70
-            echo "Build concluida"
+            echo "Deploy feito!"
