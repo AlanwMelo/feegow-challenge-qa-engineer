@@ -3,7 +3,7 @@ Library    SeleniumLibrary
 Library    OperatingSystem
 Library    Collections
 Library    RequestsLibrary
-Library    myenv/lib/python3.12/site-packages/robot/libraries/String.py
+Library    String
 
 *** Variables ***
 ###### URL onde e possivel verificar os horarios disponiveis
