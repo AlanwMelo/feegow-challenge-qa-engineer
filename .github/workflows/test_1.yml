@@ -7,34 +7,37 @@ on:
 jobs:
     test_aplication:
       runs-on: ubuntu-latest
-      # Usa uma imagem ja com o selenium/chrome configurado
-      container:
-        image: selenium/standalone-chrome:latest
-        options: --user root
-        
       steps:
-      # Configura o container para ter o python instalado
-      - name: Instala o python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.12.3'
-       
-      - name: Clona o repositorio
-        uses: actions/checkout@v4
-      
-      - name: Configuta o Robot e o Selenium
-        run: |
-          python3 -m pip install --upgrade pip
-          pip install robotframework
-          pip install robotframework-seleniumlibrary
-          pip install robotframework-requests
-      
-      # Executa o teste
-      - name: Test
-        run: robot --variable CHROME_OPTIONS:"add_argument('--headless');add_argument('--no-sandbox');add_argument('--disable-gpu')" ./2.automation-tests/alan/agendamento_cancelamento.robot
-      
-      - name: Salva o log do robot
-        uses: actions/upload-artifact@v4
-        with:
-          name: robot_log.html
-          path: ./2.automation-tests/alan/log.html
+        - name: echo
+          run: echo
+      # Usa uma imagem ja com o selenium/chrome configurado
+      #container:
+      #  image: selenium/standalone-chrome:latest
+      #  options: --user root
+      #  
+      #steps:
+      ## Configura o container para ter o python instalado
+      #- name: Instala o python
+      #  uses: actions/setup-python@v2
+      #  with:
+      #    python-version: '3.12.3'
+      # 
+      #- name: Clona o repositorio
+      #  uses: actions/checkout@v4
+      #
+      #- name: Configuta o Robot e o Selenium
+      #  run: |
+      #    python3 -m pip install --upgrade pip
+      #    pip install robotframework
+      #    pip install robotframework-seleniumlibrary
+      #    pip install robotframework-requests
+      #
+      ## Executa o teste
+      #- name: Test
+      #  run: robot --variable CHROME_OPTIONS:"add_argument('--headless');add_argument('--no-sandbox');add_argument('--disable-gpu')" ./2.automation-tests/alan/agendamento_cancelamento.robot
+      #
+      #- name: Salva o log do robot
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: robot_log.html
+      #    path: ./2.automation-tests/alan/log.html

@@ -1,0 +1,25 @@
+name: teste_3
+
+on:
+    # Este evento permite que o workflow seja chamado por outros workflows
+    workflow_call:
+      
+env: 
+  VAR_TESTE_3: "Variavel do teste 3"
+
+jobs:
+    test_aplication:
+      runs-on: ubuntu-latest
+      outputs:
+        output1: ${{ steps.step1.outputs.VAR_TESTE_3 }}
+
+      steps:
+      - name: Exemplo de teste 3
+        id: step1
+        run: |
+            sleep 45
+            echo "$VAR_TESTE_3"
+            echo "Passado a variavel para frente"
+            echo "output1=$VAR_TESTE_3" >> $GITHUB_OUTPUT
+
+            echo "Teste 3 concluido"

@@ -13,7 +13,7 @@ jobs:
     uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test_3.yml@main
 
   teste_4:
-    needs: teste_3
+    needs: [teste_1, teste_3]
     uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test_4.yml@main
 
   build:
