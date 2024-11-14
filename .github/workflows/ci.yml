@@ -8,8 +8,7 @@ jobs:
   
   teste_2:
     uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test_2.yml@main
-    secrets:
-      MY_NAME: ${{ secrets.MY_NAME }}
+    secrets: inherit
 
   teste_3:
     uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test_3.yml@main
