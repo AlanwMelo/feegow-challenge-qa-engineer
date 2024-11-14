@@ -109,8 +109,8 @@ Recupera Nome Da Unidade
     FOR    ${clinica}    IN    @{clinicas_disponiveis}
         ${locais}=            Get From Dictionary    ${clinica}    locais
         ${locais_lista}=      Split String    ${locais}    ,
-        ${bool}=              Run Keyword And Return Status    List Should Contain Value    ${locais_lista}    ${clinica_value}
-        IF    ${bool}
+        ${resultados}=        Get Match Count    ${locais_lista}    ${clinica_value}
+        IF    ${resultados} > 0
             Return From Keyword    ${clinica['nome']}
         END
     END
