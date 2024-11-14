@@ -12,7 +12,13 @@ jobs:
         image: selenium/standalone-chrome:latest
         options: --user root
         
-      steps:      
+      steps:
+      # Configura o container para ter o python instalado
+      - name: Instala o python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12.3'
+       
       - name: Clona o repositorio
         uses: actions/checkout@v4
       
