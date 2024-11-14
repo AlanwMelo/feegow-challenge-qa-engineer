@@ -138,8 +138,8 @@ Valida Se Um Horario Esta Disponivel
         ${response_medico}=     Get From Dictionary    ${response_clinica}                    ${medico}
         ${response_data}=       Get From Dictionary    ${response_medico}                     ${dia_escolhido}
     EXCEPT
-        # Retorna true em caso de erro porque o horario nao foi encontrado na API, ou seja, esta disponivel
-        Return From Keyword     true
+        # Retorna false em caso de erro porque o horario nao foi encontrado na API, ou seja, esta disponivel
+        Return From Keyword     false
     END
 
     # A data pode ser retornada como json ou lista e precisa ser tratada adequadamente
@@ -147,10 +147,31 @@ Valida Se Um Horario Esta Disponivel
     ${is_json}=            Run Keyword And Return Status    Should Be Equal As Strings    ${tipo}    <class 'dict'>
 
     IF    ${is_json}
-        ${bool}=              Run Keyword And Return Status    Dictionary Should Not Contain Value    ${response_data}    ${horario_escolhido}
+        ${bool}=              Run Keyword And Return Status    Dictionary Should Contain Value    ${response_data}    ${horario_escolhido}
         Return From Keyword    ${bool}
     ELSE
-        Log    ${response_data}
-        ${bool}=              Run Keyword And Return Status    List Should Not Contain Value          ${response_data}    ${horario_escolhido}
+        ${bool}=              Run Keyword And Return Status    List Should Contain Value          ${response_data}    ${horario_escolhido}
         Return From Keyword    ${bool}
     END
+
+Realiza Login
+    [Documentation]          Usa os dados do cliente para realizar login
+    [Arguments]              ${cpf}    ${senha}
+
+    # Clica na pagina do cliente se ela estiver sendo exibida
+    Click Element            xpath=//li[@id='menu-item-2671']
+    Sleep                    2
+
+    # Obtem os identificadores das janelas abertas e garante que o robo esta na janela correta
+    ${windows}=    Get Window Handles
+    Switch Window            ${windows[1]}
+    ${title}=                Get Title
+    Log                      ${title}
+
+    # Preenche os dados de login
+    Sleep                    2
+    Input Text               xpath=//input[@id='cpf']         ${cpf}
+    Input Text               xpath=//input[@id='password']    ${senha}
+
+    Sleep                    2
+    Click Element            xpath=//span[@class='state' and text()='Entrar']    

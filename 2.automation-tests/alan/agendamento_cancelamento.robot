@@ -10,8 +10,14 @@ Resource          my_keywords.robot
 ${URL1}            https://minhaclinica.com/agendamento
 ${URL2}            https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica
 ${CHROME_OPTIONS}  --disable-application-cache
+${DOCUMENTO}       83934571069
+${SENHA}           .hAVy445f
 
 *** Test Cases ***
+######################### ATENCAO! ###########################
+# Os teste abaixo usaram o fluxo de agendamento de producao como referencia, se a URL2 for utilizada para o teste de agendamento
+# o mesmo funcionara. O teste esta configurado desta maneira, mas o botao de concluir esta comentado, para evitar problemas o mantenha assim
+######################### ATENCAO! ###########################
 Preparacao
     [Documentation]    Consulta a API com um ID aleatorio e retorna, tambem de maneira aleatoria, uma data disponivel para agendamento
     #                  se para a especialidade encontrada nao houver agendamentos disponiveis, procura por outra especialidade
@@ -31,7 +37,7 @@ Preparacao
     Log    ${json_data}
 
 Agendar Consulta
-    [Documentation]    Teste para agendar uma nova consulta em um horário disponivel
+    [Documentation]    Realiza o fluxo padrao de agendamento de consulta
     ## Abre a pagina principal de agendamento e seleciona aleatoriamente um tipo de agendamento
     Open Browser                       ${URL2}    Chrome
     Maximize Browser Window
@@ -71,26 +77,45 @@ Agendar Consulta
     ${como_conheceu}                   Valor Aleatorio De Lista    xpath=//li[@class='select2-results__option']    id
     Click Element                      xpath=//li[@id='${como_conheceu}']
                 
-    # Conclui o agendamento, mas como criei o teste no ambiente de prod, essa opcao esta comentada
+    ######## Conclui o agendamento, mas como criei o teste no ambiente de prod, essa opcao esta comentada
     Sleep                              2    
     #Click Element                     xpath=//button[contains(@class, 'btn-primary')]
 
     Sleep    5
     Close Browser
 
-Valida Horario
+Valida Horario Foi Reservado
     [Documentation]    Valida que o horario agendado nao esta mais disponivel para agendamento, a validacao e: compara-se o json da api com o horario
     #                  agendado, se o horario for encontrado, houve erro no agendamento
     ${bool}                Valida Se Um Horario Esta Disponivel    ${ITEM_ID}    ${AGENDAMENTO}
-    # Como estou pausando antes de confirmar, esse should sempre retorna erro, por isso esta comentado
-    #Should Be True     ${bool}
+
+    ######## Como estou pausando antes de confirmar, esse should sempre retorna erro, por isso esta comentado
+    #Should Not Be True     ${bool}
 
 
 Cancelar Consulta
-    [Documentation]    Teste para cancelar a consulta agendada
-    Skip    Este teste foi ignorado    
-    Open Browser    ${URL1}    Chrome
-    Wait Until Page Contains Element    id:cancelar
-    Click Button    id:cancelar
-    Wait Until Page Does Not Contain    ${URL1}
+    [Documentation]    Realiza o fluxo padrao de cancelamento de consulta
+    Open Browser                        ${URL1}    Chrome
+    Maximize Browser Window
+    Sleep                               2
+    Realiza Login                       ${DOCUMENTO}    ${SENHA}
+
+    # Recupera os dados para montar o json no padrao da API para realizar a busca
+    ${medico}=                         Get From Dictionary    ${AGENDAMENTO}    medico_escolhido
+    ${dia_escolhido}=                  Get From Dictionary    ${AGENDAMENTO}    data_escolhida
+    ${horario_escolhido}=              Get From Dictionary    ${AGENDAMENTO}    horario_escolhido
+
+    # Remove os segundos para poder utilizar o horario como parametro de busca
+    ${horario_escolhido}=    Evaluate    '${horario_escolhido[: -3]}'
     Close Browser
+
+    ######## Deste ponto em diante os elementos sao simulados, e por isso estao comentados
+
+    # Procura pelo card appointcard com os dados da consulta e clica no botao de cancelar
+    #Click Element                       xpath=//div[contains(@class, 'appointcard') and .//p[contains(text(), '${medico}')] and .//p[contains(text(), '${dia_escolhido}')] and .//p[contains(text(), '${horario_escolhido}')]] and .//button[contains(text(), 'Cancelar')]
+
+Valida Que O Horario Foi Liberado
+    [Documentation]    Valida que o horario agendado nao esta novamente disponivel para agendamento, a validacao e: compara-se o json da api com o horario
+    #                  agendado, se o horario for encontrado, o agendamento foi cancelado
+    ${bool}                Valida Se Um Horario Esta Disponivel    ${ITEM_ID}    ${AGENDAMENTO}
+    Should Be True     ${bool}
