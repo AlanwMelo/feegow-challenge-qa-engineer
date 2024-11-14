@@ -13,13 +13,7 @@ jobs:
       steps:          
         - name: Exemplo de teste 2
           run: |
-            echo " Its a me ${{ secrets.MY_NAME }}"
-
-            if [ "${{ secrets.MY_NAME }}" = "AlanWMelo" ]; then
-                echo "E meu nome mesmo"
-            else
-                echo "Nao e"
-            fi
+            echo " Its a hidden me ${{ secrets.MY_NAME }}"
 
             sleep 20
             echo "Teste 2 concluido"
