@@ -9,15 +9,11 @@ jobs:
       runs-on: ubuntu-latest
 
       steps:
-        - env:
-            VAR_DO_TESTE_3: ${{ needs.test_3.test_aplication.output1 }}
-          run: |
-            echo "Olha a var do outro teste"
-            echo  "$VAR_DO_TESTE_3"
-
         - name: Baixa o Log gerado no teste 1
           uses: actions/download-artifact@v4
 
         
         - name: Lista artefato
-          run:  ls
+          run:  |
+            echo "Lista artefatos"
+            ls 

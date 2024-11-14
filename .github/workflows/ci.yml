@@ -1,4 +1,4 @@
-name: CI Workflow
+name: CICD Workflow
 
 on: [push]
 
@@ -9,18 +9,18 @@ jobs:
   
   teste_2:
     uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test_2.yml@main
-    secrets:
+    secrets: # Passa o segredo para o teste chamado
       MY_NAME: ${{ secrets.MY_NAME }}
 
   teste_3:
     uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test_3.yml@main
 
   teste_4:
-    needs: [teste_1, teste_3]
+    needs: [teste_1, teste_3] # Depende do teste 1 e 3
     uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/test_4.yml@main
 
   build:
-    needs: [teste_1, teste_2, teste_3, teste_4]
+    needs: [teste_1, teste_2, teste_3, teste_4] # Depende de todos os testes
     uses: AlanwMelo/feegow-challenge-qa-engineer/.github/workflows/build.yml@main
 
   deploy:
