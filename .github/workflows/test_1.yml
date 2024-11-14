@@ -7,6 +7,7 @@ on:
 jobs:
     test_aplication:
       runs-on: ubuntu-latest
+      # Usa uma imagem ja com o selenium/chrome configurado
       container:
         image: selenium/standalone-chrome:latest
         options: --user root
@@ -28,18 +29,10 @@ jobs:
           pip install robotframework-seleniumlibrary
           pip install robotframework-requests
       
-      #- name: Instala o chrome
-      #  run: |
-      #      sudo apt update
-      #      sudo apt-get install -y google-chrome-stable
-      #      sudo apt-get install -y xvfb
-      #      Xvfb :99 -ac &
-          
+      # Executa o teste
       - name: Test
-        run: |
-          pwd
-          ls
-          robot --variable CHROME_OPTIONS:"add_argument('--headless');add_argument('--no-sandbox');add_argument('--disable-gpu')" ./2.automation-tests/alan/agendamento_cancelamento.robot
+        run: robot --variable CHROME_OPTIONS:"add_argument('--headless');add_argument('--no-sandbox');add_argument('--disable-gpu')" ./2.automation-tests/alan/agendamento_cancelamento.robot
+      
       - name: Salva o log do robot
         uses: actions/upload-artifact@v4
         with:
