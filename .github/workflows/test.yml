@@ -14,6 +14,9 @@ jobs:
           with:
             python-version: '3.12.3'
         
+        - name: Clona o repositorio
+          uses: actions/checkout@v2
+        
         - name: Configuta o Robot e o Selenium
           run: |
             #python3 -m pip install --upgrade pip
@@ -25,6 +28,6 @@ jobs:
         - name: Test
           run: |
             pwd
-            cd /home/runner/work/
+            cd /home/runner/work/feegow-challenge-qa-engineer/feegow-challenge-qa-engineer
             ls -ltr
             #robot ./2.automation-tests/alan/agendamento_cancelamento.robot
