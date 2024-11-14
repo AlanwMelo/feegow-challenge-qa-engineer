@@ -13,21 +13,20 @@ jobs:
         
       steps:
       # Configura o container para ter o python instalado
-      #- name: Instala o python
-      #  uses: actions/setup-python@v2
-      #  with:
-      #    python-version: '3.12.3'
-        
+      - name: Instala o python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12.3'
+       
       - name: Clona o repositorio
         uses: actions/checkout@v4
       
-      #- name: Configuta o Robot e o Selenium
-      #  run: |
-      #    python3 -m pip install --upgrade pip
-      #    pip install selenium
-      #    pip install robotframework
-      #    pip install robotframework-seleniumlibrary
-      #    pip install robotframework-requests
+      - name: Configuta o Robot e o Selenium
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install robotframework
+          pip install robotframework-seleniumlibrary
+          pip install robotframework-requests
       
       #- name: Instala o chrome
       #  run: |
