@@ -12,7 +12,7 @@ Um pop-up de erro está sendo exibido quando um cliente tenta cancelar uma consu
 O cancelamento só é realizado com sucesso 5 minutos após o agendamento.
 
 **Impacto**:  
-Mesmo com esse comportamento fazendo parte do escopo inicial do projeto, as clínicas relataram que isto está gerando impacto negativo, pois os clientes podem querer cancelar uma consulta imediatamento por diversos motivos, e ao se depararem com essa situação, não entendem o motivo do ocorrido, o que leva muitos deles a tentar realizar o cancelamento por telefone, gerando trabalho desnecessário aos funcionários da clínica, e também o descontentamento do cliente. 
+Mesmo com esse comportamento fazendo parte do escopo inicial do projeto, as clínicas relataram que isto está gerando impacto negativo, pois os clientes podem querer cancelar uma consulta imediatamento por diversos motivos. Ao se depararem com essa situação, não entendem o motivo do ocorrido, o que leva muitos deles a tentar realizar o cancelamento por telefone, gerando trabalho desnecessário aos funcionários da clínica, e também o descontentamento do cliente. 
 
 ---
 
