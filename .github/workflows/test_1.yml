@@ -31,10 +31,10 @@ jobs:
       
       # Executa o teste
       - name: Test
-        run: robot --variable CHROME_OPTIONS:"add_argument('--headless');add_argument('--no-sandbox');add_argument('--disable-gpu')" ./2.automation-tests/alan/agendamento_cancelamento.robot
+        run: robot --variable CHROME_OPTIONS:"add_argument('--headless');add_argument('--no-sandbox');add_argument('--disable-gpu')" ./2.automation-tests/agendamento_cancelamento.robot
       
       - name: Salva o log do robot
         uses: actions/upload-artifact@v4
         with:
           name: robot_log.html
-          path: ./2.automation-tests/alan/log.html
+          path: ./2.automation-tests/log.html

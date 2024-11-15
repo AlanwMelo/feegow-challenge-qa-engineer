@@ -4,9 +4,9 @@ Este documento tem o objetivo de listar e explicar como funcionasm as APIs deste
 ### API de Agendamento
 Esta API usa os dados enviados e, se o horário estiver disponível, efetua um agendamento.
 
-**Endpoint**: 10.152.269:8080/agendar
-**Tipo**: POST 
-***Request**:
+- **Endpoint**: `10.152.269:8080/agendar`
+- **Tipo**: `POST`
+- **Request**:
 ```json
 {
   "nome": "João da Silva",
@@ -24,9 +24,9 @@ Esta API usa os dados enviados e, se o horário estiver disponível, efetua um a
 ### API de Cancelamento
 Esta API usa os dados enviados e, se existir agendamento, cancela o mesmo.
 
-**Endpoint**: 10.152.269:8080/cancelar
-**Tipo**: POST 
-***Request**:
+- **Endpoint**: `10.152.269:8080/cancelar`
+- **Tipo**: `POST`
+- **Request**:
 ```json
 {
   "nome": "João da Silva",
@@ -44,9 +44,9 @@ Esta API usa os dados enviados e, se existir agendamento, cancela o mesmo.
 ### API de Horários Reservados
 Esta API retorna os agendamentos já existentes.
 
-**Endpoint**: 10.152.269:8080/horarios-reservados
-**Tipo**: GET 
-***Response**:
+- **Endpoint**: `10.152.269:8080/horarios-reservados`
+- **Tipo**: `GET`
+- **Response**:
 ```json
 {
     "status": "sucesso",
@@ -77,9 +77,9 @@ Esta API retorna os agendamentos já existentes.
 ### API de Horários Disponíveis
 Esta API retorna os horários disponíveis para agendamentos.
 
-**Endpoint**: 10.152.269:8080/horarios-disponiveis
-**Tipo**: GET 
-***Request**:
+- **Endpoint**: `10.152.269:8080/horarios-disponiveis`
+- **Tipo**: `GET`
+- ***Request**:
 ```json
 {
     "status": "sucesso",

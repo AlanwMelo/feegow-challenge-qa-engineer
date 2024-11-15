@@ -1,0 +1,2194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.12.3 on linux)" generated="2024-11-14T20:01:05.877396" rpa="false" schemaversion="5">
+<suite id="s1" name="Agendamento Cancelamento" source="/home/alan-melo/Documents/dev_projects/docplanner/feegow-challenge-qa-engineer/2.automation-tests/agendamento_cancelamento.robot">
+<test id="s1-t1" name="Preparacao" line="23">
+<for flavor="IN RANGE">
+<iter>
+<kw name="ID De Especialidade Aleatorio" owner="my_keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:06.047246" level="INFO">${id_aleatorio} = 101</msg>
+<var>${id_aleatorio}</var>
+<arg>random.choice(${especialidades_ids})</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:06.046962" elapsed="0.000311"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-14T20:01:06.047460" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${id_aleatorio}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-14T20:01:06.047394" elapsed="0.000115"/>
+</kw>
+<msg time="2024-11-14T20:01:06.047608" level="INFO">${item_id} = 101</msg>
+<var>${item_id}</var>
+<doc>Usa a lista de possiveis tipos de consulta para selecionar um ID aleatorio</doc>
+<status status="PASS" start="2024-11-14T20:01:06.046295" elapsed="0.001331"/>
+</kw>
+<kw name="Escolhe Um Horario Disponivel" owner="my_keywords">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-11-14T20:01:07.423369" level="INFO">GET Request : url=https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica/filter-schedule?PorEspecialidade=101 
+ path_url=/index.php/agendamento-online/client/minhaclinica/filter-schedule?PorEspecialidade=101 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-11-14T20:01:07.423599" level="INFO">GET Response : url=https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica/filter-schedule?PorEspecialidade=101 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'Feegow', 'Date': 'Thu, 14 Nov 2024 23:01:07 GMT', 'Cache-Control': 'no-store, no-cache, must-revalidate', 'Pragma': 'no-cache', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': '*', 'Access-Control-Allow-Headers': '*', 'Set-Cookie': 'ci_session=u0ai1s6ufn40n1ihpgq2nluvu99t6edb; expires=Fri, 15-Nov-2024 01:01:06 GMT; Max-Age=7200; path=/; HttpOnly', 'Expires': 'Thu, 19 Nov 1981 08:52:00 GMT', 'X-Cache': 'Miss from cloudfront', 'Via': '1.1 7d4cada96f0b733f4f539a3bab2e2d16.cloudfront.net (CloudFront)', 'X-Amz-Cf-Pop': 'GRU3-P4', 'Alt-Svc': 'h3=":443"; ma=86400', 'X-Amz-Cf-Id': 'EwKDWq5K2bTGo17SIZOdKoyLq52Z3OcxGoZzoG-SZm0Bu0CsDVM1Lg==', 'X-Powered-By': 'DocPlanner'} 
+ body={
+    "avaiableSchedule": {
+        "3": {
+            "245": {
+                "2024-11-19": {
+                    "8": "10:40:00",
+                    "9": "11:00:00",
+                    "10": "11:20:00"
+                },
+                "2024-11-26": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ],
+                "2024-12-03": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ],
+                "2024-12-10": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ],
+                "2024-12-17": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ],
+                "2024-12-24": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ]
+            }
+        },
+        "44": {
+            "245": []
+        }
+    },
+    "locationsList": [
+        ""
+    ],
+    "units": [
+        {
+            "id": 0,
+            "NomeEmpresa": "Medlar Cl\u00ednica M\u00e9dica Ltda",
+            "NomeFantasia": "Asa Sul",
+            "Cep": "70302-000",
+            "Endereco": "SCS, Quadra 2, Bloco B",
+            "Numero": "20",
+            "Complemento": "Sobreloja 7",
+            "Bairro": "Asa Sul",
+            "Cidade": "Bras\u00edlia",
+            "Regiao": "",
+            "Estado": "DF",
+            "Tel1": "(61) 3202-5050",
+            "Tel2": "",
+            "Cel1": "",
+            "Obs": "08149481000103",
+            "ExibirAgendamentoOnline": "1",
+            "Email1": "",
+            "Email2": "",
+            "CNPJ": "08.149.481.0001-03",
+            "Cel2": "",
+            "CNES": "6418317",
+            "sysActive": "1",
+            "sysUser": null,
+            "sysDate": "2017-08-17 04:51:51",
+            "FusoHorario": "-3",
+            "HorarioVerao": "S",
+            "Sigla": "SCS",
+            "Coordenadas": "",
+            "Foto": null,
+            "DDDAuto": "",
+            "Site": null,
+            "ZoopSellerID": null,
+            "DHUp": "2022-07-05 15:41:22",
+            "OcultoAgenda": null,
+            "TipoPessoa": null,
+            "CPF": null,
+            "PagtoOnline": "0",
+            "ResponsavelMedico": null,
+            "ResponsavelOdontologico": null,
+            "UnidadeDeNegocio": null,
+            "nome": "Asa Sul",
+            "locais": "1,2,4,5,6,7,8,9,10,31,36,47"
+        },
+        {
+            "id": "1",
+            "UnitName": "Medlar Cl\u00ednica M\u00e9dica Ltda",
+            "NomeFantasia": "S\u00e3o Sebasti\u00e3o",
+            "Cep": "71692-604",
+            "Endereco": "Quadra 203 Conjunto 2",
+            "Numero": "s\/n",
+            "Complemento": "Lote 11 - Setor Residencial Oeste",
+            "Bairro": "S\u00e3o Sebasti\u00e3o",
+            "Cidade": "Bras\u00edlia",
+            "Regiao": null,
+            "Estado": "DF",
+            "Tel1": "(61) 3011-4781",
+            "Tel2": "",
+            "Cel1": "",
+            "Obs": "08149481000294",
+            "ExibirAgendamentoOnline": "1",
+            "Email1": "ssb@aminhaclinica.com.br",
+            "Email2": "",
+            "CNPJ": "08.149.481.0002-94",
+            "Cel2": "",
+            "CNES": "",
+            "sysActive": "1",
+            "sysUser": "8256",
+            "sysDate": "2017-09-14 13:07:42",
+            "FusoHorario": "-3",
+            "HorarioVerao": "S",
+            "Sigla": "SSB",
+            "Coordenadas": "",
+            "Foto": null,
+            "Ativo": "1",
+            "DDDAuto": "",
+            "Site": null,
+            "ZoopSellerID": null,
+            "DHUp": "2022-07-05 15:41:22",
+            "OcultoAgenda": null,
+            "RegiaoUnidade": null,
+            "ResponsavelMedico": null,
+            "ResponsavelOdontologico": null,
+            "FranquiaPadronizada": "0",
+            "Longitude": "-47.7804526",
+            "Latitude": "-15.9013082",
+            "ParceiroInstitucionalID": null,
+            "RegimeTributarioID": null,
+            "TipoPessoa": null,
+            "CPF": null,
+            "PagtoOnline": "0",
+            "UnidadeTelemedicina": null,
+            "StatusUnidadeID": null,
+            "GrupoUnidadeID": null,
+            "DataInauguracao": null,
+            "UnidadeDeNegocio": null,
+            "nome": "S\u00e3o Sebasti\u00e3o",
+            "locais": "3,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,32,33,34,35"
+        },
+        {
+            "id": "5",
+            "UnitName": "Minha Cl\u00ednica Servi\u00e7os M\u00e9dicos 882DF Ltda",
+            "NomeFantasia": "Parano\u00e1",
+            "Cep": "71571-012",
+            "Endereco": "Quadra 9, Conjunto 1",
+            "Numero": "s\/n",
+            "Complemento": "Lote 1",
+            "Bairro": "Parano\u00e1",
+            "Cidade": "Bras\u00edlia",
+            "Regiao": null,
+            "Estado": "DF",
+            "Tel1": "(61) 3049-5656",
+            "Tel2": "",
+            "Cel1": "",
+            "Obs": "27864621000250",
+            "ExibirAgendamentoOnline": "1",
+            "Email1": "prn@aminhaclinica.com.br",
+            "Email2": "",
+            "CNPJ": "27.864.621.0002-50",
+            "Cel2": "",
+            "CNES": "",
+            "sysActive": "1",
+            "sysUser": "8662",
+            "sysDate": "2017-09-18 09:28:13",
+            "FusoHorario": "-3",
+            "HorarioVerao": "S",
+            "Sigla": "PRN",
+            "Coordenadas": "",
+            "Foto": null,
+            "Ativo": "1",
+            "DDDAuto": "",
+            "Site": null,
+            "ZoopSellerID": null,
+            "DHUp": "2022-07-05 15:41:22",
+            "OcultoAgenda": null,
+            "RegiaoUnidade": null,
+            "ResponsavelMedico": null,
+            "ResponsavelOdontologico": null,
+            "FranquiaPadronizada": "0",
+            "Longitude": "-47.80257959999999",
+            "Latitude": "-15.8879189",
+            "ParceiroInstitucionalID": null,
+            "RegimeTributarioID": null,
+            "TipoPessoa": null,
+            "CPF": null,
+            "PagtoOnline": "0",
+            "UnidadeTelemedicina": null,
+            "StatusUnidadeID": null,
+            "GrupoUnidadeID": null,
+            "DataInauguracao": null,
+            "UnidadeDeNegocio": null,
+            "nome": "Parano\u00e1",
+            "locais": "30,37,38,39,40,41,42,43,44,45,46,48,49,50,51,52,53,54"
+        }
+    ],
+    "professionals": [
+        {
+            "NomeProfissional": "Carlos Wagner Fran\u00e7a",
+            "Unidades": "|5|, |1|",
+            "EspecialidadeID": "89",
+            "id": "245",
+            "TratamentoID": "2",
+            "Sexo": "1",
+            "Foto": null,
+            "DocumentoConselho": "31257",
+            "Conselho": "CRM",
+            "UFConselho": "DF",
+            "Tratamento": "Dr."
+        }
+    ]
+} 
+ </msg>
+<msg time="2024-11-14T20:01:07.423873" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${horarios_disponiveis}${id_da_especialidade}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2024-11-14T20:01:06.048416" elapsed="1.375487"/>
+</kw>
+<kw name="Convert To Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:07.424619" level="INFO">${json_data} = {'avaiableSchedule': {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00...</msg>
+<var>${json_data}</var>
+<arg>${response.json()}</arg>
+<doc>Converts the given ``item`` to a Python ``dict`` type.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.424057" elapsed="0.000594"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:07.424960" level="INFO">${agendamentos_disponiveis} = {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40...</msg>
+<var>${agendamentos_disponiveis}</var>
+<arg>${json_data}</arg>
+<arg>avaiableSchedule</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.424788" elapsed="0.000192"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.425169" level="INFO">{'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-03': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-10': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-17': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-24': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00']}}, '44': {'245': []}}</msg>
+<arg>${agendamentos_disponiveis}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.425070" elapsed="0.000133"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.426193" level="INFO">${agendamentos_filtrados} = {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40...</msg>
+<var>${agendamentos_filtrados}</var>
+<arg>{k: v for k, v in ${json_data['avaiableSchedule']}.items() if v != {} and all(val != [] for val in v.values())}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.425282" elapsed="0.000943"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.426769" level="INFO">${agendamentos_filtrados} = {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40...</msg>
+<var>${agendamentos_filtrados}</var>
+<arg>{k: {sk: sv for sk, sv in v.items() if sv} for k, v in ${agendamentos_filtrados}.items() if v}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.426380" elapsed="0.000416"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.427729" level="INFO">${agendamentos_filtrados} = {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40...</msg>
+<var>${agendamentos_filtrados}</var>
+<arg>{k: {sk: {date: times for date, times in sv.items() if times} for sk, sv in v.items() if sv} for k, v in ${json_data['avaiableSchedule']}.items() if v}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.426993" elapsed="0.000766"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.428360" level="INFO">${agendamentos_filtrados} = {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40...</msg>
+<var>${agendamentos_filtrados}</var>
+<arg>{k: v for k, v in ${agendamentos_filtrados}.items() if v != {}}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.427921" elapsed="0.000466"/>
+</kw>
+<if>
+<branch type="IF" condition="len(${agendamentos_filtrados}) == 0">
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>"false"</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-11-14T20:01:07.428927" elapsed="0.000048"/>
+</kw>
+<status status="NOT RUN" start="2024-11-14T20:01:07.428501" elapsed="0.000528"/>
+</branch>
+<status status="PASS" start="2024-11-14T20:01:07.428472" elapsed="0.000594"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.429312" level="INFO">{'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-03': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-10': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-17': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-24': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00']}}}</msg>
+<arg>${agendamentos_filtrados}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.429145" elapsed="0.000209"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.429775" level="INFO">${clinica_escolhida} = 3</msg>
+<var>${clinica_escolhida}</var>
+<arg>random.choice(list(${agendamentos_filtrados}.keys()))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.429450" elapsed="0.000348"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.430025" level="INFO">3</msg>
+<arg>${clinica_escolhida}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.429926" elapsed="0.000131"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.430453" level="INFO">${medico_escolhido} = 245</msg>
+<var>${medico_escolhido}</var>
+<arg>random.choice(list(${agendamentos_filtrados}[${clinica_escolhida}].keys()))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.430133" elapsed="0.000346"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.430719" level="INFO">245</msg>
+<arg>${medico_escolhido}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.430600" elapsed="0.000152"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.431165" level="INFO">${data_escolhida} = 2024-11-26</msg>
+<var>${data_escolhida}</var>
+<arg>random.choice(list(${agendamentos_filtrados}[${clinica_escolhida}][${medico_escolhido}].keys()))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.430836" elapsed="0.000352"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.431508" level="INFO">2024-11-26</msg>
+<arg>${data_escolhida}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.431389" elapsed="0.000165"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.431923" level="INFO">${tipo} = &lt;class 'list'&gt;</msg>
+<var>${tipo}</var>
+<arg>type(${agendamentos_filtrados}[${clinica_escolhida}][${medico_escolhido}][${data_escolhida}])</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.431648" elapsed="0.000297"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.432271" level="INFO">Argument types are:
+&lt;class 'type'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2024-11-14T20:01:07.432361" level="FAIL">&lt;class 'list'&gt; != &lt;class 'dict'&gt;</msg>
+<arg>${tipo}</arg>
+<arg>&lt;class 'dict'&gt;</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="FAIL" start="2024-11-14T20:01:07.432165" elapsed="0.000325">&lt;class 'list'&gt; != &lt;class 'dict'&gt;</status>
+</kw>
+<msg time="2024-11-14T20:01:07.432568" level="INFO">${is_json} = False</msg>
+<var>${is_json}</var>
+<arg>Should Be Equal As Strings</arg>
+<arg>${tipo}</arg>
+<arg>&lt;class 'dict'&gt;</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.432057" elapsed="0.000528"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_json}">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${horario_escolhido}</var>
+<arg>random.choice(list(${agendamentos_filtrados}[${clinica_escolhida}][${medico_escolhido}][${data_escolhida}].values()))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2024-11-14T20:01:07.432782" elapsed="0.000145"/>
+</kw>
+<status status="NOT RUN" start="2024-11-14T20:01:07.432659" elapsed="0.000299"/>
+</branch>
+<branch type="ELSE">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.433330" level="INFO">${horario_escolhido} = 09:00:00</msg>
+<var>${horario_escolhido}</var>
+<arg>random.choice(list(${agendamentos_filtrados}[${clinica_escolhida}][${medico_escolhido}][${data_escolhida}]))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.433055" elapsed="0.000299"/>
+</kw>
+<status status="PASS" start="2024-11-14T20:01:07.432987" elapsed="0.000407"/>
+</branch>
+<status status="PASS" start="2024-11-14T20:01:07.432639" elapsed="0.000783"/>
+</if>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.433874" level="INFO">${result} = {'clinica_escolhida': '3', 'medico_escolhido': '245', 'data_escolhida': '2024-11-26', 'horario_escolhido': '09:00:00'}</msg>
+<var>${result}</var>
+<arg>clinica_escolhida=${clinica_escolhida}</arg>
+<arg>medico_escolhido=${medico_escolhido}</arg>
+<arg>data_escolhida=${data_escolhida}</arg>
+<arg>horario_escolhido=${horario_escolhido}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.433525" elapsed="0.000374"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.434072" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${result}</arg>
+<arg>${json_data}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.434012" elapsed="0.000104"/>
+</kw>
+<msg time="2024-11-14T20:01:07.434292" level="INFO">${result} = [{'clinica_escolhida': '3', 'medico_escolhido': '245', 'data_escolhida': '2024-11-26', 'horario_escolhido': '09:00:00'}, {'avaiableSchedule': {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00...</msg>
+<var>${result}</var>
+<arg>${item_id}</arg>
+<doc>Usa a API de consulta para escolher uma data disponivel de maneira aleatoria para o ${id_da_especialidade}. Se nenhum ID for informado
+o 96 sera usado como padrao</doc>
+<status status="PASS" start="2024-11-14T20:01:06.048224" elapsed="1.386089"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.434564" level="INFO">${ITEM_ID} = 101</msg>
+<arg>${ITEM_ID}</arg>
+<arg>${item_id}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.434420" elapsed="0.000174"/>
+</kw>
+<kw name="Exit For Loop If" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.435741" level="INFO">Exiting for loop altogether.</msg>
+<arg>${result} != "false"</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.434672" elapsed="0.001162"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2024-11-14T20:01:06.046029" elapsed="1.389887"/>
+</iter>
+<var>${i}</var>
+<value>50</value>
+<status status="PASS" start="2024-11-14T20:01:06.045824" elapsed="1.390149"/>
+</for>
+<kw name="Get From List" owner="Collections">
+<msg time="2024-11-14T20:01:07.436442" level="INFO">${agendamento} = {'clinica_escolhida': '3', 'medico_escolhido': '245', 'data_escolhida': '2024-11-26', 'horario_escolhido': '09:00:00'}</msg>
+<var>${agendamento}</var>
+<arg>${result}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.436225" elapsed="0.000238"/>
+</kw>
+<kw name="Get From List" owner="Collections">
+<msg time="2024-11-14T20:01:07.436795" level="INFO">${json_data} = {'avaiableSchedule': {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00...</msg>
+<var>${json_data}</var>
+<arg>${result}</arg>
+<arg>1</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.436602" elapsed="0.000212"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.437081" level="INFO">${AGENDAMENTO} = {'clinica_escolhida': '3', 'medico_escolhido': '245', 'data_escolhida': '2024-11-26', 'horario_escolhido': '09:00:00'}</msg>
+<arg>${AGENDAMENTO}</arg>
+<arg>${agendamento}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.436942" elapsed="0.000169"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.437408" level="INFO">${JSON_DATA} = {'avaiableSchedule': {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00...</msg>
+<arg>${JSON_DATA}</arg>
+<arg>${json_data}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.437200" elapsed="0.000242"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.437718" level="INFO">{'clinica_escolhida': '3', 'medico_escolhido': '245', 'data_escolhida': '2024-11-26', 'horario_escolhido': '09:00:00'}</msg>
+<arg>${agendamento}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.437598" elapsed="0.000152"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-14T20:01:07.438007" level="INFO">{'avaiableSchedule': {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-03': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-10': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-17': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-24': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00']}}, '44': {'245': []}}, 'locationsList': [''], 'units': [{'id': 0, 'NomeEmpresa': 'Medlar Clínica Médica Ltda', 'NomeFantasia': 'Asa Sul', 'Cep': '70302-000', 'Endereco': 'SCS, Quadra 2, Bloco B', 'Numero': '20', 'Complemento': 'Sobreloja 7', 'Bairro': 'Asa Sul', 'Cidade': 'Brasília', 'Regiao': '', 'Estado': 'DF', 'Tel1': '(61) 3202-5050', 'Tel2': '', 'Cel1': '', 'Obs': '08149481000103', 'ExibirAgendamentoOnline': '1', 'Email1': '', 'Email2': '', 'CNPJ': '08.149.481.0001-03', 'Cel2': '', 'CNES': '6418317', 'sysActive': '1', 'sysUser': None, 'sysDate': '2017-08-17 04:51:51', 'FusoHorario': '-3', 'HorarioVerao': 'S', 'Sigla': 'SCS', 'Coordenadas': '', 'Foto': None, 'DDDAuto': '', 'Site': None, 'ZoopSellerID': None, 'DHUp': '2022-07-05 15:41:22', 'OcultoAgenda': None, 'TipoPessoa': None, 'CPF': None, 'PagtoOnline': '0', 'ResponsavelMedico': None, 'ResponsavelOdontologico': None, 'UnidadeDeNegocio': None, 'nome': 'Asa Sul', 'locais': '1,2,4,5,6,7,8,9,10,31,36,47'}, {'id': '1', 'UnitName': 'Medlar Clínica Médica Ltda', 'NomeFantasia': 'São Sebastião', 'Cep': '71692-604', 'Endereco': 'Quadra 203 Conjunto 2', 'Numero': 's/n', 'Complemento': 'Lote 11 - Setor Residencial Oeste', 'Bairro': 'São Sebastião', 'Cidade': 'Brasília', 'Regiao': None, 'Estado': 'DF', 'Tel1': '(61) 3011-4781', 'Tel2': '', 'Cel1': '', 'Obs': '08149481000294', 'ExibirAgendamentoOnline': '1', 'Email1': 'ssb@aminhaclinica.com.br', 'Email2': '', 'CNPJ': '08.149.481.0002-94', 'Cel2': '', 'CNES': '', 'sysActive': '1', 'sysUser': '8256', 'sysDate': '2017-09-14 13:07:42', 'FusoHorario': '-3', 'HorarioVerao': 'S', 'Sigla': 'SSB', 'Coordenadas': '', 'Foto': None, 'Ativo': '1', 'DDDAuto': '', 'Site': None, 'ZoopSellerID': None, 'DHUp': '2022-07-05 15:41:22', 'OcultoAgenda': None, 'RegiaoUnidade': None, 'ResponsavelMedico': None, 'ResponsavelOdontologico': None, 'FranquiaPadronizada': '0', 'Longitude': '-47.7804526', 'Latitude': '-15.9013082', 'ParceiroInstitucionalID': None, 'RegimeTributarioID': None, 'TipoPessoa': None, 'CPF': None, 'PagtoOnline': '0', 'UnidadeTelemedicina': None, 'StatusUnidadeID': None, 'GrupoUnidadeID': None, 'DataInauguracao': None, 'UnidadeDeNegocio': None, 'nome': 'São Sebastião', 'locais': '3,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,32,33,34,35'}, {'id': '5', 'UnitName': 'Minha Clínica Serviços Médicos 882DF Ltda', 'NomeFantasia': 'Paranoá', 'Cep': '71571-012', 'Endereco': 'Quadra 9, Conjunto 1', 'Numero': 's/n', 'Complemento': 'Lote 1', 'Bairro': 'Paranoá', 'Cidade': 'Brasília', 'Regiao': None, 'Estado': 'DF', 'Tel1': '(61) 3049-5656', 'Tel2': '', 'Cel1': '', 'Obs': '27864621000250', 'ExibirAgendamentoOnline': '1', 'Email1': 'prn@aminhaclinica.com.br', 'Email2': '', 'CNPJ': '27.864.621.0002-50', 'Cel2': '', 'CNES': '', 'sysActive': '1', 'sysUser': '8662', 'sysDate': '2017-09-18 09:28:13', 'FusoHorario': '-3', 'HorarioVerao': 'S', 'Sigla': 'PRN', 'Coordenadas': '', 'Foto': None, 'Ativo': '1', 'DDDAuto': '', 'Site': None, 'ZoopSellerID': None, 'DHUp': '2022-07-05 15:41:22', 'OcultoAgenda': None, 'RegiaoUnidade': None, 'ResponsavelMedico': None, 'ResponsavelOdontologico': None, 'FranquiaPadronizada': '0', 'Longitude': '-47.80257959999999', 'Latitude': '-15.8879189', 'ParceiroInstitucionalID': None, 'RegimeTributarioID': None, 'TipoPessoa': None, 'CPF': None, 'PagtoOnline': '0', 'UnidadeTelemedicina': None, 'StatusUnidadeID': None, 'GrupoUnidadeID': None, 'DataInauguracao': None, 'UnidadeDeNegocio': None, 'nome': 'Paranoá', 'locais': '30,37,38,39,40,41,42,43,44,45,46,48,49,50,51,52,53,54'}], 'professionals': [{'NomeProfissional': 'Carlos Wagner França', 'Unidades': '|5|, |1|', 'EspecialidadeID': '89', 'id': '245', 'TratamentoID': '2', 'Sexo': '1', 'Foto': None, 'DocumentoConselho': '31257', 'Conselho': 'CRM', 'UFConselho': 'DF', 'Tratamento': 'Dr.'}]}</msg>
+<arg>${json_data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.437864" elapsed="0.000257"/>
+</kw>
+<doc>Consulta a API com um ID aleatorio e retorna, tambem de maneira aleatoria, uma data disponivel para agendamento</doc>
+<status status="PASS" start="2024-11-14T20:01:06.045536" elapsed="1.392729"/>
+</test>
+<test id="s1-t2" name="Agendar Consulta" line="41">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:07.439057" level="INFO">Opening browser 'Chrome' to base url 'https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica'.</msg>
+<arg>${URL2}</arg>
+<arg>Chrome</arg>
+<arg>options=${CHROME_OPTIONS}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-11-14T20:01:07.438814" elapsed="1.618677"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-11-14T20:01:09.057696" elapsed="0.026753"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:11.085663" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:09.084890" elapsed="2.001027"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:11.086716" level="INFO">Clicking element 'id=select2-feegow-especialidades-container'.</msg>
+<arg>id=select2-feegow-especialidades-container</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:11.086266" elapsed="0.081787"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:13.168545" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:11.168252" elapsed="2.000447"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:13.169180" level="INFO">Clicking element 'xpath=//li[contains(@id, 'select2-feegow-especialidades-result-') and contains(@id, 101)]'.</msg>
+<arg>xpath=//li[contains(@id, 'select2-feegow-especialidades-result-') and contains(@id, ${ITEM_ID})]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:13.168939" elapsed="0.069680"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:15.239398" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:13.238820" elapsed="2.000735"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:15.240043" level="INFO">Clicking element 'xpath=//button[contains(@class, 'agendar-horario-btn')]'.</msg>
+<arg>xpath=//button[contains(@class, 'agendar-horario-btn')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:15.239894" elapsed="0.079720"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:17.320346" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:15.319810" elapsed="2.000692"/>
+</kw>
+<kw name="Recupera Nome Da Unidade" owner="my_keywords">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:17.321400" level="INFO">${clinicas_disponiveis} = [{'id': 0, 'NomeEmpresa': 'Medlar Clínica Médica Ltda', 'NomeFantasia': 'Asa Sul', 'Cep': '70302-000', 'Endereco': 'SCS, Quadra 2, Bloco B', 'Numero': '20', 'Complemento': 'Sobreloja 7', 'Bairro': 'As...</msg>
+<var>${clinicas_disponiveis}</var>
+<arg>${json_data}</arg>
+<arg>units</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:17.321238" elapsed="0.000253"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:17.321716" level="INFO">${clinica_value} = 3</msg>
+<var>${clinica_value}</var>
+<arg>${agendamento}</arg>
+<arg>clinica_escolhida</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:17.321600" elapsed="0.000136"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:17.322146" level="INFO">${locais} = 1,2,4,5,6,7,8,9,10,31,36,47</msg>
+<var>${locais}</var>
+<arg>${clinica}</arg>
+<arg>locais</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:17.322038" elapsed="0.000126"/>
+</kw>
+<kw name="Split String" owner="String">
+<msg time="2024-11-14T20:01:17.322334" level="INFO">${locais_lista} = ['1', '2', '4', '5', '6', '7', '8', '9', '10', '31', '36', '47']</msg>
+<var>${locais_lista}</var>
+<arg>${locais}</arg>
+<arg>,</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<status status="PASS" start="2024-11-14T20:01:17.322235" elapsed="0.000116"/>
+</kw>
+<kw name="Get Match Count" owner="Collections">
+<msg time="2024-11-14T20:01:17.322604" level="INFO">${resultados} = 0</msg>
+<var>${resultados}</var>
+<arg>${locais_lista}</arg>
+<arg>${clinica_value}</arg>
+<doc>Returns the count of matches to ``pattern`` in ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:17.322416" elapsed="0.000207"/>
+</kw>
+<if>
+<branch type="IF" condition="${resultados} &gt; 0">
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>${clinica['nome']}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-11-14T20:01:17.322821" elapsed="0.000019"/>
+</kw>
+<status status="NOT RUN" start="2024-11-14T20:01:17.322684" elapsed="0.000196"/>
+</branch>
+<status status="PASS" start="2024-11-14T20:01:17.322668" elapsed="0.000238"/>
+</if>
+<var name="${clinica}">{'id': 0, 'NomeEmpresa': 'Medlar Clínica Médica Ltda', 'NomeFantasia': 'Asa Sul', 'Cep': '70302-000', 'Endereco': 'SCS, Quadra 2, Bloco B', 'Numero': '20', 'Complemento': 'Sobreloja 7', 'Bairro': 'Asa...</var>
+<status status="PASS" start="2024-11-14T20:01:17.321967" elapsed="0.000956"/>
+</iter>
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:17.323187" level="INFO">${locais} = 3,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,32,33,34,35</msg>
+<var>${locais}</var>
+<arg>${clinica}</arg>
+<arg>locais</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:17.323088" elapsed="0.000117"/>
+</kw>
+<kw name="Split String" owner="String">
+<msg time="2024-11-14T20:01:17.323367" level="INFO">${locais_lista} = ['3', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '32', '33', '34', '35']</msg>
+<var>${locais_lista}</var>
+<arg>${locais}</arg>
+<arg>,</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<status status="PASS" start="2024-11-14T20:01:17.323272" elapsed="0.000113"/>
+</kw>
+<kw name="Get Match Count" owner="Collections">
+<msg time="2024-11-14T20:01:17.323574" level="INFO">${resultados} = 1</msg>
+<var>${resultados}</var>
+<arg>${locais_lista}</arg>
+<arg>${clinica_value}</arg>
+<doc>Returns the count of matches to ``pattern`` in ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:17.323449" elapsed="0.000142"/>
+</kw>
+<if>
+<branch type="IF" condition="${resultados} &gt; 0">
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-14T20:01:17.323818" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${clinica['nome']}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-14T20:01:17.323766" elapsed="0.000104"/>
+</kw>
+<status status="PASS" start="2024-11-14T20:01:17.323654" elapsed="0.000247"/>
+</branch>
+<status status="PASS" start="2024-11-14T20:01:17.323630" elapsed="0.000297"/>
+</if>
+<var name="${clinica}">{'id': '1', 'UnitName': 'Medlar Clínica Médica Ltda', 'NomeFantasia': 'São Sebastião', 'Cep': '71692-604', 'Endereco': 'Quadra 203 Conjunto 2', 'Numero': 's/n', 'Complemento': 'Lote 11 - Setor Residen...</var>
+<status status="PASS" start="2024-11-14T20:01:17.323035" elapsed="0.000910"/>
+</iter>
+<var>${clinica}</var>
+<value>@{clinicas_disponiveis}</value>
+<status status="PASS" start="2024-11-14T20:01:17.321790" elapsed="0.002186"/>
+</for>
+<msg time="2024-11-14T20:01:17.324291" level="INFO">${unidade} = São Sebastião</msg>
+<var>${unidade}</var>
+<arg>${JSON_DATA}</arg>
+<arg>${AGENDAMENTO}</arg>
+<doc>Usa as informacoes do agendamento e o json do request inicial para recuperar o nome da clinica</doc>
+<status status="PASS" start="2024-11-14T20:01:17.320973" elapsed="0.003337"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:19.324995" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:17.324423" elapsed="2.000786"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:19.325939" level="INFO">Clicking element 'xpath=//div[contains(@class, 'item-list-unidade') and @data-name='São Sebastião']/div[2]/button'.</msg>
+<arg>xpath=//div[contains(@class, 'item-list-unidade') and @data-name='${unidade}']/div[2]/button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:19.325675" elapsed="0.078598"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:21.404800" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:19.404474" elapsed="2.000576"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:21.405786" level="INFO">${dia_escolhido} = 2024-11-26</msg>
+<var>${dia_escolhido}</var>
+<arg>${agendamento}</arg>
+<arg>data_escolhida</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:21.405509" elapsed="0.000297"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:21.406021" level="INFO">${horario_escolhido} = 09:00:00</msg>
+<var>${horario_escolhido}</var>
+<arg>${agendamento}</arg>
+<arg>horario_escolhido</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:21.405916" elapsed="0.000121"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:23.406443" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:21.406128" elapsed="2.000471"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:23.407362" level="INFO">Clicking element 'xpath=//button[@data-time="2024-11-26 09:00:00"]'.</msg>
+<arg>xpath=//button[@data-time="${dia_escolhido} ${horario_escolhido}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:23.406970" elapsed="0.076241"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:25.483814" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:23.483479" elapsed="2.000527"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:25.484549" level="INFO">Typing text 'Fabricio Ficticio' into text field 'xpath=//input[@name='nome']'.</msg>
+<arg>xpath=//input[@name='nome']</arg>
+<arg>Fabricio Ficticio</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:25.484359" elapsed="0.112178"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:25.596985" level="INFO">Typing text '14/09/1974' into text field 'xpath=//input[@name='nascimento']'.</msg>
+<arg>xpath=//input[@name='nascimento']</arg>
+<arg>14/09/1974</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:25.596757" elapsed="0.084927"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:25.682092" level="INFO">Clicking element 'xpath=//input[@id='sexo-masculino' and @type='radio']'.</msg>
+<arg>xpath=//input[@id='sexo-masculino' and @type='radio']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:25.681919" elapsed="0.078156"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:25.760653" level="INFO">Typing text '67558243050' into text field 'xpath=//input[@name='cpf']'.</msg>
+<arg>xpath=//input[@name='cpf']</arg>
+<arg>67558243050</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:25.760395" elapsed="0.084230"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:25.845066" level="INFO">Typing text '119968246982' into text field 'xpath=//input[@name='celular']'.</msg>
+<arg>xpath=//input[@name='celular']</arg>
+<arg>119968246982</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:25.844869" elapsed="0.066408"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:25.912030" level="INFO">Typing text 'fabricio@ficticio.com' into text field 'xpath=//input[@name='email']'.</msg>
+<arg>xpath=//input[@name='email']</arg>
+<arg>fabricio@ficticio.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:25.911689" elapsed="0.088111"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.000411" level="INFO">Typing text 'Minhas Observacoes' into text field 'xpath=//textarea[@id='obs']'.</msg>
+<arg>xpath=//textarea[@id='obs']</arg>
+<arg>Minhas Observacoes</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.000201" elapsed="0.092607"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.093270" level="INFO">Clicking element 'xpath=//span[@id='select2-origem-container']'.</msg>
+<arg>xpath=//span[@id='select2-origem-container']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.093087" elapsed="0.075082"/>
+</kw>
+<kw name="Valor Aleatorio De Lista" owner="my_keywords">
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.180944" level="INFO">${lista} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.83")&gt;, &lt;selenium.webdriv...</msg>
+<var>${lista}</var>
+<arg>${xPath_da_lista}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.169074" elapsed="0.011910"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-11-14T20:01:26.181233" level="INFO">${nomes} = []</msg>
+<var>${nomes}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.181127" elapsed="0.000130"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.189176" level="INFO">${nome} = select2-origem-result-23so-13</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.181495" elapsed="0.007716"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.189351" elapsed="0.000131"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.83")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.181416" elapsed="0.008099"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.195752" level="INFO">${nome} = select2-origem-result-8tk7-8</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.189684" elapsed="0.006103"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.195941" elapsed="0.000139"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.84")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.189605" elapsed="0.006510"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.201848" level="INFO">${nome} = select2-origem-result-bzbx-15</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.196285" elapsed="0.005613"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.202037" elapsed="0.000128"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.85")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.196210" elapsed="0.005988"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.207707" level="INFO">${nome} = select2-origem-result-61vy-17</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.202355" elapsed="0.005385"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.207887" elapsed="0.000128"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.86")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.202285" elapsed="0.005762"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.213630" level="INFO">${nome} = select2-origem-result-958u-1</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.208217" elapsed="0.005447"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.213838" elapsed="0.000244"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.87")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.208147" elapsed="0.005972"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.218726" level="INFO">${nome} = select2-origem-result-v5tu-16</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.214292" elapsed="0.004469"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.218911" elapsed="0.000127"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.88")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.214211" elapsed="0.004858"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.223373" level="INFO">${nome} = select2-origem-result-vp65-6</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.219224" elapsed="0.004181"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.223539" elapsed="0.000123"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.89")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.219155" elapsed="0.004541"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.228484" level="INFO">${nome} = select2-origem-result-awni-7</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.223848" elapsed="0.004669"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.228649" elapsed="0.000132"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.90")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.223779" elapsed="0.005035"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.233785" level="INFO">${nome} = select2-origem-result-jnb4-2</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.228996" elapsed="0.004822"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.233963" elapsed="0.000120"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.91")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.228917" elapsed="0.005197"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.238569" level="INFO">${nome} = select2-origem-result-ak7n-5</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.234266" elapsed="0.004336"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.238738" elapsed="0.000136"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.92")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.234198" elapsed="0.004708"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.243624" level="INFO">${nome} = select2-origem-result-grw4-4</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.239068" elapsed="0.004589"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.243792" elapsed="0.000137"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.93")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.238989" elapsed="0.004972"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.249698" level="INFO">${nome} = select2-origem-result-w11p-14</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.244124" elapsed="0.005607"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.249882" elapsed="0.000121"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.94")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.244043" elapsed="0.005991"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.255427" level="INFO">${nome} = select2-origem-result-r79y-11</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.250187" elapsed="0.005288"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.255624" elapsed="0.000136"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.95")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.250117" elapsed="0.005679"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.260685" level="INFO">${nome} = select2-origem-result-v4jj-10</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.255988" elapsed="0.004730"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.260961" elapsed="0.000141"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.96")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.255907" elapsed="0.005230"/>
+</iter>
+<iter>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.266432" level="INFO">${nome} = select2-origem-result-qtrq-9</msg>
+<var>${nome}</var>
+<arg>${unidade}</arg>
+<arg>${parametro_de_retorno}</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.261297" elapsed="0.005168"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${nomes}</arg>
+<arg>${nome}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.266599" elapsed="0.000118"/>
+</kw>
+<var name="${unidade}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c1b4fd2ad7f56554f7dab7b263f7dad3", element="f.3272D5BE2E3981A4DC5FE214C55AE0E7.d.4FAF54C82AF407447A5B091F9175A801.e.97")&gt;</var>
+<status status="PASS" start="2024-11-14T20:01:26.261224" elapsed="0.005525"/>
+</iter>
+<var>${unidade}</var>
+<value>@{lista}</value>
+<status status="PASS" start="2024-11-14T20:01:26.181304" elapsed="0.085482"/>
+</for>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:26.267099" level="INFO">${unidade_aleatoria} = select2-origem-result-qtrq-9</msg>
+<var>${unidade_aleatoria}</var>
+<arg>random.choice(${nomes})</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.266881" elapsed="0.000236"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-14T20:01:26.267247" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${unidade_aleatoria}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.267195" elapsed="0.000090"/>
+</kw>
+<msg time="2024-11-14T20:01:26.267373" level="INFO">${como_conheceu} = select2-origem-result-qtrq-9</msg>
+<var>${como_conheceu}</var>
+<arg>xpath=//li[@class='select2-results__option']</arg>
+<arg>id</arg>
+<doc>Recebe o caminho de um xPath que exibe uma lista de elementos e seleciona um deles de maneira aleatoria de acordo com o ${parametro_de_retorno}</doc>
+<status status="PASS" start="2024-11-14T20:01:26.168818" elapsed="0.098571"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:26.267641" level="INFO">Clicking element 'xpath=//li[@id='select2-origem-result-qtrq-9']'.</msg>
+<arg>xpath=//li[@id='${como_conheceu}']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.267508" elapsed="0.066928"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:28.334994" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:26.334631" elapsed="2.000571"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:33.336387" level="INFO">Slept 5 seconds.</msg>
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:28.335646" elapsed="5.000952"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-11-14T20:01:33.337095" elapsed="0.090711"/>
+</kw>
+<doc>Realiza o fluxo padrao de agendamento de consulta</doc>
+<status status="PASS" start="2024-11-14T20:01:07.438493" elapsed="25.989603"/>
+</test>
+<test id="s1-t3" name="Valida Horario Foi Reservado" line="89">
+<kw name="Valida Se Um Horario Esta Disponivel" owner="my_keywords">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-11-14T20:01:34.784939" level="INFO">GET Request : url=https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica/filter-schedule?PorEspecialidade=101 
+ path_url=/index.php/agendamento-online/client/minhaclinica/filter-schedule?PorEspecialidade=101 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-11-14T20:01:34.785094" level="INFO">GET Response : url=https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica/filter-schedule?PorEspecialidade=101 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'Feegow', 'Date': 'Thu, 14 Nov 2024 23:01:34 GMT', 'Cache-Control': 'no-store, no-cache, must-revalidate', 'Pragma': 'no-cache', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': '*', 'Access-Control-Allow-Headers': '*', 'Set-Cookie': 'ci_session=q8pndaajtd5mqa5ructsaeph788j3bpl; expires=Fri, 15-Nov-2024 01:01:33 GMT; Max-Age=7200; path=/; HttpOnly', 'Expires': 'Thu, 19 Nov 1981 08:52:00 GMT', 'X-Cache': 'Miss from cloudfront', 'Via': '1.1 7d4cada96f0b733f4f539a3bab2e2d16.cloudfront.net (CloudFront)', 'X-Amz-Cf-Pop': 'GRU3-P4', 'Alt-Svc': 'h3=":443"; ma=86400', 'X-Amz-Cf-Id': 'oYmCkYXTx_iT4dfGT2A7dEIeIX-EF5T71inTK7j0KUnnr2pq-GAJHw==', 'X-Powered-By': 'DocPlanner'} 
+ body={
+    "avaiableSchedule": {
+        "3": {
+            "245": {
+                "2024-11-19": {
+                    "8": "10:40:00",
+                    "9": "11:00:00",
+                    "10": "11:20:00"
+                },
+                "2024-11-26": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ],
+                "2024-12-03": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ],
+                "2024-12-10": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ],
+                "2024-12-17": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ],
+                "2024-12-24": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ]
+            }
+        },
+        "44": {
+            "245": []
+        }
+    },
+    "locationsList": [
+        ""
+    ],
+    "units": [
+        {
+            "id": 0,
+            "NomeEmpresa": "Medlar Cl\u00ednica M\u00e9dica Ltda",
+            "NomeFantasia": "Asa Sul",
+            "Cep": "70302-000",
+            "Endereco": "SCS, Quadra 2, Bloco B",
+            "Numero": "20",
+            "Complemento": "Sobreloja 7",
+            "Bairro": "Asa Sul",
+            "Cidade": "Bras\u00edlia",
+            "Regiao": "",
+            "Estado": "DF",
+            "Tel1": "(61) 3202-5050",
+            "Tel2": "",
+            "Cel1": "",
+            "Obs": "08149481000103",
+            "ExibirAgendamentoOnline": "1",
+            "Email1": "",
+            "Email2": "",
+            "CNPJ": "08.149.481.0001-03",
+            "Cel2": "",
+            "CNES": "6418317",
+            "sysActive": "1",
+            "sysUser": null,
+            "sysDate": "2017-08-17 04:51:51",
+            "FusoHorario": "-3",
+            "HorarioVerao": "S",
+            "Sigla": "SCS",
+            "Coordenadas": "",
+            "Foto": null,
+            "DDDAuto": "",
+            "Site": null,
+            "ZoopSellerID": null,
+            "DHUp": "2022-07-05 15:41:22",
+            "OcultoAgenda": null,
+            "TipoPessoa": null,
+            "CPF": null,
+            "PagtoOnline": "0",
+            "ResponsavelMedico": null,
+            "ResponsavelOdontologico": null,
+            "UnidadeDeNegocio": null,
+            "nome": "Asa Sul",
+            "locais": "1,2,4,5,6,7,8,9,10,31,36,47"
+        },
+        {
+            "id": "1",
+            "UnitName": "Medlar Cl\u00ednica M\u00e9dica Ltda",
+            "NomeFantasia": "S\u00e3o Sebasti\u00e3o",
+            "Cep": "71692-604",
+            "Endereco": "Quadra 203 Conjunto 2",
+            "Numero": "s\/n",
+            "Complemento": "Lote 11 - Setor Residencial Oeste",
+            "Bairro": "S\u00e3o Sebasti\u00e3o",
+            "Cidade": "Bras\u00edlia",
+            "Regiao": null,
+            "Estado": "DF",
+            "Tel1": "(61) 3011-4781",
+            "Tel2": "",
+            "Cel1": "",
+            "Obs": "08149481000294",
+            "ExibirAgendamentoOnline": "1",
+            "Email1": "ssb@aminhaclinica.com.br",
+            "Email2": "",
+            "CNPJ": "08.149.481.0002-94",
+            "Cel2": "",
+            "CNES": "",
+            "sysActive": "1",
+            "sysUser": "8256",
+            "sysDate": "2017-09-14 13:07:42",
+            "FusoHorario": "-3",
+            "HorarioVerao": "S",
+            "Sigla": "SSB",
+            "Coordenadas": "",
+            "Foto": null,
+            "Ativo": "1",
+            "DDDAuto": "",
+            "Site": null,
+            "ZoopSellerID": null,
+            "DHUp": "2022-07-05 15:41:22",
+            "OcultoAgenda": null,
+            "RegiaoUnidade": null,
+            "ResponsavelMedico": null,
+            "ResponsavelOdontologico": null,
+            "FranquiaPadronizada": "0",
+            "Longitude": "-47.7804526",
+            "Latitude": "-15.9013082",
+            "ParceiroInstitucionalID": null,
+            "RegimeTributarioID": null,
+            "TipoPessoa": null,
+            "CPF": null,
+            "PagtoOnline": "0",
+            "UnidadeTelemedicina": null,
+            "StatusUnidadeID": null,
+            "GrupoUnidadeID": null,
+            "DataInauguracao": null,
+            "UnidadeDeNegocio": null,
+            "nome": "S\u00e3o Sebasti\u00e3o",
+            "locais": "3,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,32,33,34,35"
+        },
+        {
+            "id": "5",
+            "UnitName": "Minha Cl\u00ednica Servi\u00e7os M\u00e9dicos 882DF Ltda",
+            "NomeFantasia": "Parano\u00e1",
+            "Cep": "71571-012",
+            "Endereco": "Quadra 9, Conjunto 1",
+            "Numero": "s\/n",
+            "Complemento": "Lote 1",
+            "Bairro": "Parano\u00e1",
+            "Cidade": "Bras\u00edlia",
+            "Regiao": null,
+            "Estado": "DF",
+            "Tel1": "(61) 3049-5656",
+            "Tel2": "",
+            "Cel1": "",
+            "Obs": "27864621000250",
+            "ExibirAgendamentoOnline": "1",
+            "Email1": "prn@aminhaclinica.com.br",
+            "Email2": "",
+            "CNPJ": "27.864.621.0002-50",
+            "Cel2": "",
+            "CNES": "",
+            "sysActive": "1",
+            "sysUser": "8662",
+            "sysDate": "2017-09-18 09:28:13",
+            "FusoHorario": "-3",
+            "HorarioVerao": "S",
+            "Sigla": "PRN",
+            "Coordenadas": "",
+            "Foto": null,
+            "Ativo": "1",
+            "DDDAuto": "",
+            "Site": null,
+            "ZoopSellerID": null,
+            "DHUp": "2022-07-05 15:41:22",
+            "OcultoAgenda": null,
+            "RegiaoUnidade": null,
+            "ResponsavelMedico": null,
+            "ResponsavelOdontologico": null,
+            "FranquiaPadronizada": "0",
+            "Longitude": "-47.80257959999999",
+            "Latitude": "-15.8879189",
+            "ParceiroInstitucionalID": null,
+            "RegimeTributarioID": null,
+            "TipoPessoa": null,
+            "CPF": null,
+            "PagtoOnline": "0",
+            "UnidadeTelemedicina": null,
+            "StatusUnidadeID": null,
+            "GrupoUnidadeID": null,
+            "DataInauguracao": null,
+            "UnidadeDeNegocio": null,
+            "nome": "Parano\u00e1",
+            "locais": "30,37,38,39,40,41,42,43,44,45,46,48,49,50,51,52,53,54"
+        }
+    ],
+    "professionals": [
+        {
+            "NomeProfissional": "Carlos Wagner Fran\u00e7a",
+            "Unidades": "|5|, |1|",
+            "EspecialidadeID": "89",
+            "id": "245",
+            "TratamentoID": "2",
+            "Sexo": "1",
+            "Foto": null,
+            "DocumentoConselho": "31257",
+            "Conselho": "CRM",
+            "UFConselho": "DF",
+            "Tratamento": "Dr."
+        }
+    ]
+} 
+ </msg>
+<msg time="2024-11-14T20:01:34.785355" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${horarios_disponiveis}${id_da_especialidade}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2024-11-14T20:01:33.429312" elapsed="1.356063"/>
+</kw>
+<kw name="Convert To Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:34.785999" level="INFO">${json_data} = {'avaiableSchedule': {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00...</msg>
+<var>${json_data}</var>
+<arg>${response.json()}</arg>
+<doc>Converts the given ``item`` to a Python ``dict`` type.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.785512" elapsed="0.000507"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:34.786230" level="INFO">${agendamentos_disponiveis} = {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40...</msg>
+<var>${agendamentos_disponiveis}</var>
+<arg>${json_data}</arg>
+<arg>avaiableSchedule</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.786109" elapsed="0.000139"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-14T20:01:34.786418" level="INFO">{'clinica_escolhida': '3', 'medico_escolhido': '245', 'data_escolhida': '2024-11-26', 'horario_escolhido': '09:00:00'}</msg>
+<arg>${agendamento}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.786324" elapsed="0.000134"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-14T20:01:34.786626" level="INFO">{'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-03': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-10': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-17': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-24': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00']}}, '44': {'245': []}}</msg>
+<arg>${agendamentos_disponiveis}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.786530" elapsed="0.000126"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:34.786818" level="INFO">${clinica} = 3</msg>
+<var>${clinica}</var>
+<arg>${agendamento}</arg>
+<arg>clinica_escolhida</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.786721" elapsed="0.000113"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:34.787011" level="INFO">${medico} = 245</msg>
+<var>${medico}</var>
+<arg>${agendamento}</arg>
+<arg>medico_escolhido</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.786919" elapsed="0.000108"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:34.787191" level="INFO">${dia_escolhido} = 2024-11-26</msg>
+<var>${dia_escolhido}</var>
+<arg>${agendamento}</arg>
+<arg>data_escolhida</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.787094" elapsed="0.000114"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:34.787368" level="INFO">${horario_escolhido} = 09:00:00</msg>
+<var>${horario_escolhido}</var>
+<arg>${agendamento}</arg>
+<arg>horario_escolhido</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.787272" elapsed="0.000113"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:34.787668" level="INFO">${response_clinica} = {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', ...</msg>
+<var>${response_clinica}</var>
+<arg>${agendamentos_disponiveis}</arg>
+<arg>${clinica}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.787542" elapsed="0.000144"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:34.787872" level="INFO">${response_medico} = {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:0...</msg>
+<var>${response_medico}</var>
+<arg>${response_clinica}</arg>
+<arg>${medico}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.787749" elapsed="0.000140"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:34.788057" level="INFO">${response_data} = ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00']</msg>
+<var>${response_data}</var>
+<arg>${response_medico}</arg>
+<arg>${dia_escolhido}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.787953" elapsed="0.000122"/>
+</kw>
+<status status="PASS" start="2024-11-14T20:01:34.787475" elapsed="0.000629"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>false</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-11-14T20:01:34.788220" elapsed="0.000018"/>
+</kw>
+<status status="NOT RUN" start="2024-11-14T20:01:34.788148" elapsed="0.000115"/>
+</branch>
+<status status="PASS" start="2024-11-14T20:01:34.787435" elapsed="0.000859"/>
+</try>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:34.788514" level="INFO">${tipo} = &lt;class 'list'&gt;</msg>
+<var>${tipo}</var>
+<arg>type(${response_data})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.788351" elapsed="0.000180"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-11-14T20:01:34.788953" level="INFO">Argument types are:
+&lt;class 'type'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2024-11-14T20:01:34.789021" level="FAIL">&lt;class 'list'&gt; != &lt;class 'dict'&gt;</msg>
+<arg>${tipo}</arg>
+<arg>&lt;class 'dict'&gt;</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="FAIL" start="2024-11-14T20:01:34.788699" elapsed="0.000381">&lt;class 'list'&gt; != &lt;class 'dict'&gt;</status>
+</kw>
+<msg time="2024-11-14T20:01:34.789142" level="INFO">${is_json} = False</msg>
+<var>${is_json}</var>
+<arg>Should Be Equal As Strings</arg>
+<arg>${tipo}</arg>
+<arg>&lt;class 'dict'&gt;</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.788603" elapsed="0.000555"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_json}">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<var>${bool}</var>
+<arg>Dictionary Should Contain Value</arg>
+<arg>${response_data}</arg>
+<arg>${horario_escolhido}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" start="2024-11-14T20:01:34.789308" elapsed="0.000018"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>${bool}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-11-14T20:01:34.789459" elapsed="0.000018"/>
+</kw>
+<status status="NOT RUN" start="2024-11-14T20:01:34.789217" elapsed="0.000289"/>
+</branch>
+<branch type="ELSE">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="List Should Contain Value" owner="Collections">
+<arg>${response_data}</arg>
+<arg>${horario_escolhido}</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.789677" elapsed="0.000121"/>
+</kw>
+<msg time="2024-11-14T20:01:34.789885" level="INFO">${bool} = True</msg>
+<var>${bool}</var>
+<arg>List Should Contain Value</arg>
+<arg>${response_data}</arg>
+<arg>${horario_escolhido}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.789591" elapsed="0.000312"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-14T20:01:34.790029" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${bool}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.789980" elapsed="0.000088"/>
+</kw>
+<status status="PASS" start="2024-11-14T20:01:34.789531" elapsed="0.000566"/>
+</branch>
+<status status="PASS" start="2024-11-14T20:01:34.789202" elapsed="0.000922"/>
+</if>
+<msg time="2024-11-14T20:01:34.790200" level="INFO">${bool} = True</msg>
+<var>${bool}</var>
+<arg>${ITEM_ID}</arg>
+<arg>${AGENDAMENTO}</arg>
+<status status="PASS" start="2024-11-14T20:01:33.429009" elapsed="1.361207"/>
+</kw>
+<doc>Valida que o horario agendado nao esta mais disponivel para agendamento, a validacao e: compara-se o json da api com o horario</doc>
+<status status="PASS" start="2024-11-14T20:01:33.428358" elapsed="1.361968"/>
+</test>
+<test id="s1-t4" name="Cancelar Consulta" line="98">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:34.790911" level="INFO">Opening browser 'Chrome' to base url 'https://minhaclinica.com/agendamento'.</msg>
+<arg>${URL1}</arg>
+<arg>Chrome</arg>
+<arg>options=${CHROME_OPTIONS}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-11-14T20:01:34.790720" elapsed="3.666907"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-11-14T20:01:38.457911" elapsed="0.037608"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:40.496208" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:38.495804" elapsed="2.000542"/>
+</kw>
+<kw name="Realiza Login" owner="my_keywords">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:40.497247" level="INFO">Clicking element 'xpath=//li[@id='menu-item-2671']'.</msg>
+<arg>xpath=//li[@id='menu-item-2671']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:40.497123" elapsed="0.105962"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:42.603592" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:40.603313" elapsed="2.000419"/>
+</kw>
+<kw name="Get Window Handles" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:42.608691" level="INFO">${windows} = ['654CDA41CF0F9CFFBDBA7BF6F65B65F6', '9FB3075460E2C954D4C81474077BBEED']</msg>
+<var>${windows}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<status status="PASS" start="2024-11-14T20:01:42.603997" elapsed="0.004728"/>
+</kw>
+<kw name="Switch Window" owner="SeleniumLibrary">
+<arg>${windows[1]}</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:42.608879" elapsed="0.032571"/>
+</kw>
+<kw name="Get Title" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:42.650917" level="INFO">${title} = Área do paciente | feegowclinic</msg>
+<var>${title}</var>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2024-11-14T20:01:42.641648" elapsed="0.009310"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-14T20:01:42.651287" level="INFO">Área do paciente | feegowclinic</msg>
+<arg>${title}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-14T20:01:42.651139" elapsed="0.000179"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:44.651977" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:42.651384" elapsed="2.000798"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:44.652882" level="INFO">Typing text '83934571069' into text field 'xpath=//input[@id='cpf']'.</msg>
+<arg>xpath=//input[@id='cpf']</arg>
+<arg>${cpf}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:44.652496" elapsed="0.097509"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:44.750635" level="INFO">Typing text '.hAVy445f' into text field 'xpath=//input[@id='password']'.</msg>
+<arg>xpath=//input[@id='password']</arg>
+<arg>${senha}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:44.750296" elapsed="0.094574"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-14T20:01:46.845429" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-14T20:01:44.845124" elapsed="2.000399"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-11-14T20:01:46.845842" level="INFO">Clicking element 'xpath=//span[@class='state' and text()='Entrar']'.</msg>
+<arg>xpath=//span[@class='state' and text()='Entrar']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-14T20:01:46.845675" elapsed="0.082236"/>
+</kw>
+<arg>${DOCUMENTO}</arg>
+<arg>${SENHA}</arg>
+<doc>Usa os dados do cliente para realizar login</doc>
+<status status="PASS" start="2024-11-14T20:01:40.496741" elapsed="6.431265"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:46.928332" level="INFO">${medico} = 245</msg>
+<var>${medico}</var>
+<arg>${AGENDAMENTO}</arg>
+<arg>medico_escolhido</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:46.928169" elapsed="0.000182"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:46.928543" level="INFO">${dia_escolhido} = 2024-11-26</msg>
+<var>${dia_escolhido}</var>
+<arg>${AGENDAMENTO}</arg>
+<arg>data_escolhida</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:46.928443" elapsed="0.000117"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:46.928742" level="INFO">${horario_escolhido} = 09:00:00</msg>
+<var>${horario_escolhido}</var>
+<arg>${AGENDAMENTO}</arg>
+<arg>horario_escolhido</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:46.928648" elapsed="0.000110"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:46.929316" level="INFO">${horario_escolhido} = 09:00</msg>
+<var>${horario_escolhido}</var>
+<arg>'${horario_escolhido[: -3]}'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:46.928847" elapsed="0.000496"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-11-14T20:01:46.929590" elapsed="0.079783"/>
+</kw>
+<doc>Realiza o fluxo padrao de cancelamento de consulta</doc>
+<status status="PASS" start="2024-11-14T20:01:34.790483" elapsed="12.219170"/>
+</test>
+<test id="s1-t5" name="Valida Que O Horario Foi Liberado" line="119">
+<kw name="Valida Se Um Horario Esta Disponivel" owner="my_keywords">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-11-14T20:01:48.378653" level="INFO">GET Request : url=https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica/filter-schedule?PorEspecialidade=101 
+ path_url=/index.php/agendamento-online/client/minhaclinica/filter-schedule?PorEspecialidade=101 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-11-14T20:01:48.378792" level="INFO">GET Response : url=https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica/filter-schedule?PorEspecialidade=101 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'Feegow', 'Date': 'Thu, 14 Nov 2024 23:01:48 GMT', 'Cache-Control': 'no-store, no-cache, must-revalidate', 'Pragma': 'no-cache', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': '*', 'Access-Control-Allow-Headers': '*', 'Set-Cookie': 'ci_session=4jvmgsora34eldoagb07rv213c0qs9bl; expires=Fri, 15-Nov-2024 01:01:47 GMT; Max-Age=7200; path=/; HttpOnly', 'Expires': 'Thu, 19 Nov 1981 08:52:00 GMT', 'X-Cache': 'Miss from cloudfront', 'Via': '1.1 04d6bb773b5e7e57636695458b3a4bd8.cloudfront.net (CloudFront)', 'X-Amz-Cf-Pop': 'GRU3-P4', 'Alt-Svc': 'h3=":443"; ma=86400', 'X-Amz-Cf-Id': 'ERXnp72xM9S_UttycQBb_xydrJq2Crk9ptk4hN0W7JZgYVeZmQqqkw==', 'X-Powered-By': 'DocPlanner'} 
+ body={
+    "avaiableSchedule": {
+        "3": {
+            "245": {
+                "2024-11-19": {
+                    "8": "10:40:00",
+                    "9": "11:00:00",
+                    "10": "11:20:00"
+                },
+                "2024-11-26": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ],
+                "2024-12-03": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ],
+                "2024-12-10": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ],
+                "2024-12-17": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ],
+                "2024-12-24": [
+                    "08:00:00",
+                    "08:20:00",
+                    "08:40:00",
+                    "09:00:00",
+                    "09:20:00",
+                    "09:40:00",
+                    "10:00:00",
+                    "10:20:00",
+                    "10:40:00",
+                    "11:00:00",
+                    "11:20:00"
+                ]
+            }
+        },
+        "44": {
+            "245": []
+        }
+    },
+    "locationsList": [
+        ""
+    ],
+    "units": [
+        {
+            "id": 0,
+            "NomeEmpresa": "Medlar Cl\u00ednica M\u00e9dica Ltda",
+            "NomeFantasia": "Asa Sul",
+            "Cep": "70302-000",
+            "Endereco": "SCS, Quadra 2, Bloco B",
+            "Numero": "20",
+            "Complemento": "Sobreloja 7",
+            "Bairro": "Asa Sul",
+            "Cidade": "Bras\u00edlia",
+            "Regiao": "",
+            "Estado": "DF",
+            "Tel1": "(61) 3202-5050",
+            "Tel2": "",
+            "Cel1": "",
+            "Obs": "08149481000103",
+            "ExibirAgendamentoOnline": "1",
+            "Email1": "",
+            "Email2": "",
+            "CNPJ": "08.149.481.0001-03",
+            "Cel2": "",
+            "CNES": "6418317",
+            "sysActive": "1",
+            "sysUser": null,
+            "sysDate": "2017-08-17 04:51:51",
+            "FusoHorario": "-3",
+            "HorarioVerao": "S",
+            "Sigla": "SCS",
+            "Coordenadas": "",
+            "Foto": null,
+            "DDDAuto": "",
+            "Site": null,
+            "ZoopSellerID": null,
+            "DHUp": "2022-07-05 15:41:22",
+            "OcultoAgenda": null,
+            "TipoPessoa": null,
+            "CPF": null,
+            "PagtoOnline": "0",
+            "ResponsavelMedico": null,
+            "ResponsavelOdontologico": null,
+            "UnidadeDeNegocio": null,
+            "nome": "Asa Sul",
+            "locais": "1,2,4,5,6,7,8,9,10,31,36,47"
+        },
+        {
+            "id": "1",
+            "UnitName": "Medlar Cl\u00ednica M\u00e9dica Ltda",
+            "NomeFantasia": "S\u00e3o Sebasti\u00e3o",
+            "Cep": "71692-604",
+            "Endereco": "Quadra 203 Conjunto 2",
+            "Numero": "s\/n",
+            "Complemento": "Lote 11 - Setor Residencial Oeste",
+            "Bairro": "S\u00e3o Sebasti\u00e3o",
+            "Cidade": "Bras\u00edlia",
+            "Regiao": null,
+            "Estado": "DF",
+            "Tel1": "(61) 3011-4781",
+            "Tel2": "",
+            "Cel1": "",
+            "Obs": "08149481000294",
+            "ExibirAgendamentoOnline": "1",
+            "Email1": "ssb@aminhaclinica.com.br",
+            "Email2": "",
+            "CNPJ": "08.149.481.0002-94",
+            "Cel2": "",
+            "CNES": "",
+            "sysActive": "1",
+            "sysUser": "8256",
+            "sysDate": "2017-09-14 13:07:42",
+            "FusoHorario": "-3",
+            "HorarioVerao": "S",
+            "Sigla": "SSB",
+            "Coordenadas": "",
+            "Foto": null,
+            "Ativo": "1",
+            "DDDAuto": "",
+            "Site": null,
+            "ZoopSellerID": null,
+            "DHUp": "2022-07-05 15:41:22",
+            "OcultoAgenda": null,
+            "RegiaoUnidade": null,
+            "ResponsavelMedico": null,
+            "ResponsavelOdontologico": null,
+            "FranquiaPadronizada": "0",
+            "Longitude": "-47.7804526",
+            "Latitude": "-15.9013082",
+            "ParceiroInstitucionalID": null,
+            "RegimeTributarioID": null,
+            "TipoPessoa": null,
+            "CPF": null,
+            "PagtoOnline": "0",
+            "UnidadeTelemedicina": null,
+            "StatusUnidadeID": null,
+            "GrupoUnidadeID": null,
+            "DataInauguracao": null,
+            "UnidadeDeNegocio": null,
+            "nome": "S\u00e3o Sebasti\u00e3o",
+            "locais": "3,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,32,33,34,35"
+        },
+        {
+            "id": "5",
+            "UnitName": "Minha Cl\u00ednica Servi\u00e7os M\u00e9dicos 882DF Ltda",
+            "NomeFantasia": "Parano\u00e1",
+            "Cep": "71571-012",
+            "Endereco": "Quadra 9, Conjunto 1",
+            "Numero": "s\/n",
+            "Complemento": "Lote 1",
+            "Bairro": "Parano\u00e1",
+            "Cidade": "Bras\u00edlia",
+            "Regiao": null,
+            "Estado": "DF",
+            "Tel1": "(61) 3049-5656",
+            "Tel2": "",
+            "Cel1": "",
+            "Obs": "27864621000250",
+            "ExibirAgendamentoOnline": "1",
+            "Email1": "prn@aminhaclinica.com.br",
+            "Email2": "",
+            "CNPJ": "27.864.621.0002-50",
+            "Cel2": "",
+            "CNES": "",
+            "sysActive": "1",
+            "sysUser": "8662",
+            "sysDate": "2017-09-18 09:28:13",
+            "FusoHorario": "-3",
+            "HorarioVerao": "S",
+            "Sigla": "PRN",
+            "Coordenadas": "",
+            "Foto": null,
+            "Ativo": "1",
+            "DDDAuto": "",
+            "Site": null,
+            "ZoopSellerID": null,
+            "DHUp": "2022-07-05 15:41:22",
+            "OcultoAgenda": null,
+            "RegiaoUnidade": null,
+            "ResponsavelMedico": null,
+            "ResponsavelOdontologico": null,
+            "FranquiaPadronizada": "0",
+            "Longitude": "-47.80257959999999",
+            "Latitude": "-15.8879189",
+            "ParceiroInstitucionalID": null,
+            "RegimeTributarioID": null,
+            "TipoPessoa": null,
+            "CPF": null,
+            "PagtoOnline": "0",
+            "UnidadeTelemedicina": null,
+            "StatusUnidadeID": null,
+            "GrupoUnidadeID": null,
+            "DataInauguracao": null,
+            "UnidadeDeNegocio": null,
+            "nome": "Parano\u00e1",
+            "locais": "30,37,38,39,40,41,42,43,44,45,46,48,49,50,51,52,53,54"
+        }
+    ],
+    "professionals": [
+        {
+            "NomeProfissional": "Carlos Wagner Fran\u00e7a",
+            "Unidades": "|5|, |1|",
+            "EspecialidadeID": "89",
+            "id": "245",
+            "TratamentoID": "2",
+            "Sexo": "1",
+            "Foto": null,
+            "DocumentoConselho": "31257",
+            "Conselho": "CRM",
+            "UFConselho": "DF",
+            "Tratamento": "Dr."
+        }
+    ]
+} 
+ </msg>
+<msg time="2024-11-14T20:01:48.379174" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${horarios_disponiveis}${id_da_especialidade}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2024-11-14T20:01:47.011230" elapsed="1.367989"/>
+</kw>
+<kw name="Convert To Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:48.379830" level="INFO">${json_data} = {'avaiableSchedule': {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00...</msg>
+<var>${json_data}</var>
+<arg>${response.json()}</arg>
+<doc>Converts the given ``item`` to a Python ``dict`` type.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.379352" elapsed="0.000513"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:48.380071" level="INFO">${agendamentos_disponiveis} = {'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40...</msg>
+<var>${agendamentos_disponiveis}</var>
+<arg>${json_data}</arg>
+<arg>avaiableSchedule</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.379952" elapsed="0.000137"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-14T20:01:48.380242" level="INFO">{'clinica_escolhida': '3', 'medico_escolhido': '245', 'data_escolhida': '2024-11-26', 'horario_escolhido': '09:00:00'}</msg>
+<arg>${agendamento}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.380163" elapsed="0.000107"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-14T20:01:48.380418" level="INFO">{'3': {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-03': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-10': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-17': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00'], '2024-12-24': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00']}}, '44': {'245': []}}</msg>
+<arg>${agendamentos_disponiveis}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.380333" elapsed="0.000115"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:48.380604" level="INFO">${clinica} = 3</msg>
+<var>${clinica}</var>
+<arg>${agendamento}</arg>
+<arg>clinica_escolhida</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.380510" elapsed="0.000110"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:48.380776" level="INFO">${medico} = 245</msg>
+<var>${medico}</var>
+<arg>${agendamento}</arg>
+<arg>medico_escolhido</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.380685" elapsed="0.000109"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:48.380962" level="INFO">${dia_escolhido} = 2024-11-26</msg>
+<var>${dia_escolhido}</var>
+<arg>${agendamento}</arg>
+<arg>data_escolhida</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.380869" elapsed="0.000109"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:48.381136" level="INFO">${horario_escolhido} = 09:00:00</msg>
+<var>${horario_escolhido}</var>
+<arg>${agendamento}</arg>
+<arg>horario_escolhido</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.381042" elapsed="0.000111"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:48.381406" level="INFO">${response_clinica} = {'245': {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', ...</msg>
+<var>${response_clinica}</var>
+<arg>${agendamentos_disponiveis}</arg>
+<arg>${clinica}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.381291" elapsed="0.000133"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:48.381598" level="INFO">${response_medico} = {'2024-11-19': {'8': '10:40:00', '9': '11:00:00', '10': '11:20:00'}, '2024-11-26': ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:0...</msg>
+<var>${response_medico}</var>
+<arg>${response_clinica}</arg>
+<arg>${medico}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.381487" elapsed="0.000128"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-14T20:01:48.381784" level="INFO">${response_data} = ['08:00:00', '08:20:00', '08:40:00', '09:00:00', '09:20:00', '09:40:00', '10:00:00', '10:20:00', '10:40:00', '11:00:00', '11:20:00']</msg>
+<var>${response_data}</var>
+<arg>${response_medico}</arg>
+<arg>${dia_escolhido}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.381678" elapsed="0.000123"/>
+</kw>
+<status status="PASS" start="2024-11-14T20:01:48.381231" elapsed="0.000599"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>false</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-11-14T20:01:48.381950" elapsed="0.000018"/>
+</kw>
+<status status="NOT RUN" start="2024-11-14T20:01:48.381883" elapsed="0.000110"/>
+</branch>
+<status status="PASS" start="2024-11-14T20:01:48.381198" elapsed="0.000824"/>
+</try>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-14T20:01:48.382233" level="INFO">${tipo} = &lt;class 'list'&gt;</msg>
+<var>${tipo}</var>
+<arg>type(${response_data})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.382081" elapsed="0.000169"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-11-14T20:01:48.382488" level="INFO">Argument types are:
+&lt;class 'type'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2024-11-14T20:01:48.382551" level="FAIL">&lt;class 'list'&gt; != &lt;class 'dict'&gt;</msg>
+<arg>${tipo}</arg>
+<arg>&lt;class 'dict'&gt;</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="FAIL" start="2024-11-14T20:01:48.382411" elapsed="0.000188">&lt;class 'list'&gt; != &lt;class 'dict'&gt;</status>
+</kw>
+<msg time="2024-11-14T20:01:48.382658" level="INFO">${is_json} = False</msg>
+<var>${is_json}</var>
+<arg>Should Be Equal As Strings</arg>
+<arg>${tipo}</arg>
+<arg>&lt;class 'dict'&gt;</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.382321" elapsed="0.000353"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_json}">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<var>${bool}</var>
+<arg>Dictionary Should Contain Value</arg>
+<arg>${response_data}</arg>
+<arg>${horario_escolhido}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" start="2024-11-14T20:01:48.382819" elapsed="0.000017"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>${bool}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-11-14T20:01:48.382994" elapsed="0.000025"/>
+</kw>
+<status status="NOT RUN" start="2024-11-14T20:01:48.382731" elapsed="0.000315"/>
+</branch>
+<branch type="ELSE">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="List Should Contain Value" owner="Collections">
+<arg>${response_data}</arg>
+<arg>${horario_escolhido}</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.383222" elapsed="0.000122"/>
+</kw>
+<msg time="2024-11-14T20:01:48.383399" level="INFO">${bool} = True</msg>
+<var>${bool}</var>
+<arg>List Should Contain Value</arg>
+<arg>${response_data}</arg>
+<arg>${horario_escolhido}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.383132" elapsed="0.000289"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-14T20:01:48.383556" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${bool}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.383508" elapsed="0.000086"/>
+</kw>
+<status status="PASS" start="2024-11-14T20:01:48.383072" elapsed="0.000551"/>
+</branch>
+<status status="PASS" start="2024-11-14T20:01:48.382717" elapsed="0.000930"/>
+</if>
+<msg time="2024-11-14T20:01:48.383723" level="INFO">${bool} = True</msg>
+<var>${bool}</var>
+<arg>${ITEM_ID}</arg>
+<arg>${AGENDAMENTO}</arg>
+<status status="PASS" start="2024-11-14T20:01:47.010517" elapsed="1.373223"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${bool}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.383870" elapsed="0.000084"/>
+</kw>
+<doc>Valida que o horario agendado nao esta novamente disponivel para agendamento, a validacao e: compara-se o json da api com o horario</doc>
+<status status="PASS" start="2024-11-14T20:01:47.009874" elapsed="1.374168"/>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2024-11-14T20:01:48.384380" elapsed="0.000094"/>
+</kw>
+<status status="PASS" start="2024-11-14T20:01:05.878100" elapsed="42.506403"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="5" fail="0" skip="0" id="s1" name="Agendamento Cancelamento">Agendamento Cancelamento</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

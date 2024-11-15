@@ -109,7 +109,7 @@ Este plano de teste serve como uma diretriz para assegurar a funcionalidade crí
 > **Obs**: A documentação das APIs pode ser encontrada no arquivo APIs.md.
 
 ### Passos
-1. Realizar uma chamada a API de horários disponíveis
+1. Realizar uma chamada à API de horários disponíveis
 
 ### Resultado esperado
 1. A API deve retornar uma lista com os horários disponíveis para agendamento.
@@ -146,11 +146,11 @@ Este plano de teste serve como uma diretriz para assegurar a funcionalidade crí
 > **Obs**: Existe uma API que retorna os dados de agendamentos disponíveis, a documentação das APIs pode ser encontrada no arquivo APIs.md.
 
 ### Passos
-1. Realizar uma chamada a API de agendamentos com um horário disponível.
+1. Realizar uma chamada à API de agendamentos com um horário disponível.
 2. Realizar uma consulta no banco de dados na tabela de agendamentos com os dados do agendamento testado.
 
 ### Resultado esperado
-1. O retorno da API deve ser 200 - Sucesso, hoŕario disponível
+1. O retorno da API deve ser 200 - Sucesso, horário disponível
 2. Uma nova linha deve ser criada na tabela com os dados do agendamento efetuado.
 
 ---
@@ -161,16 +161,16 @@ Este plano de teste serve como uma diretriz para assegurar a funcionalidade crí
 1. API de agendamentos devidamente configurada.
 2. Dados validos para um agendamento (nome, email, cpf e telefone, dados do agendamento).
 
-> **Obs**: Existe uma API que retorna os dados de agendamentos efetuados, a documentação das APIs pode ser encontrada no arquivo APIs.md.
+> **Obs**: Existe uma API que retorna os dados de agendamentos efetuados. A documentação das APIs pode ser encontrada no arquivo APIs.md.
 
 ### Passos
 1. Realizar uma consulta no banco de dados na tabela de agendamentos com os dados do agendamento testado.
-2. Realizar uma chamada a API de agendamentos com um horário indisponível.
+2. Realizar uma chamada à API de agendamentos com um horário indisponível.
 3. Realizar uma nova consulta no banco de dados na tabela de agendamentos com os dados do agendamento testado.
 
 ### Resultado esperado
 1. Deve existir uma linha na tabela com os dados do agendamento testado.
-2. O retorno da API deve ser 200 - Sucesso, hoŕario indisponível
+2. O retorno da API deve ser 200 - Sucesso, horário indisponível
 2. A linha existente na tabela não foi alterada.
 
 ---
@@ -180,15 +180,15 @@ Este plano de teste serve como uma diretriz para assegurar a funcionalidade crí
 ### Pré condições
 1. API de horários agendamento devidamente configurada.
 2. Utilizar um cliente com dados válidos (nome, email, cpf e telefone).
-3. Utilizar a API de agendamentos disponíveis para encontrar um horário disponínel
+3. Utilizar a API de agendamentos disponíveis para encontrar um horário disponível
 
 > **Obs**: A documentação das APIs pode ser encontrada no arquivo APIs.md.
 
 ### Passos
-1. Realizar uma chamada a API de agendamento
+1. Realizar uma chamada à API de agendamento
 
 ### Resultado esperado
-1. A API deve retornar 200, Sucesso, Agendamento efetuado.
+1. A API deve retornar 200 - Sucesso, Agendamento efetuado.
 
 ---
 
@@ -197,7 +197,7 @@ Este plano de teste serve como uma diretriz para assegurar a funcionalidade crí
 ### Pré condições
 1. Todos os sistemas devem estar inteiramente disponíveis.
 2. Utilizar um cliente com dados válidos (nome, email, cpf e telefone).
-3. Utilizar a API de agendamentos disponíveis para encontrar um horário disponínel
+3. Utilizar a API de agendamentos disponíveis para encontrar um horário disponível
 
 > **Obs**: A documentação das APIs pode ser encontrada no arquivo APIs.md.
 
@@ -209,7 +209,7 @@ Este plano de teste serve como uma diretriz para assegurar a funcionalidade crí
 5. Escolher o médico e o horário desejados.
 6. Preencher os campos com os dados do cliente.
 7. Clicar no botão "Agendar Consulta"
-8. Realizar uma chamada a API de verificação de horário com os dados do agendamento.
+8. Realizar uma chamada à API de verificação de horário com os dados do agendamento.
 
 ### Resultado esperado
 1. Um pop-up informando que o agendamento foi efetuado deve ser exibido.
@@ -226,7 +226,7 @@ Este plano de teste serve como uma diretriz para assegurar a funcionalidade crí
 2. Cliente na tela de confirmação de dados.
 
 ### Passos
-1. Preencher os campos de cadastro com informações inválidas (ex: Faltando quantidade mínima de dígitos, em branco, etc)
+1. Preencher os campos de cadastro com informações inválidas (ex: Faltando quantidade mínima de dígitos, em branco, etc.)
 2. Clicar no botão de "Confirmar Agendamento"
 
 ### Resultado esperado
@@ -240,14 +240,14 @@ Este plano de teste serve como uma diretriz para assegurar a funcionalidade crí
 
 ### Pré condições
 1. API de cancelamento devidamente configurada.
-2. Dados validos para um agendamento (nome, email, cpf e telefone, dados do agendamento).
+2. Dados válidos para um agendamento (nome, email, cpf e telefone, dados do agendamento).
 
-> **Obs**: Existe uma API que retorna os dados de agendamentos efetuados, a documentação das APIs pode ser encontrada no arquivo APIs.md.
+> **Obs**: Existe uma API que retorna os dados de agendamentos efetuados. A documentação das APIs pode ser encontrada no arquivo APIs.md.
 
 ### Passos
-1. Realizar uma consulta na tabela de agendamentos com os dados do agendamento
-2. Realizar uma chamada a API de cancelamento com os dados do agendamento.
-3. Realizar uma nova consulta a tabela de agendamentos com os dados do agendamento.
+1. Realizar uma consulta na tabela de agendamentos com os dados do agendamento.
+2. Realizar uma chamada à API de cancelamento com os dados do agendamento.
+3. Realizar uma nova consulta à tabela de agendamentos com os dados do agendamento.
 
 ### Resultado esperado
 1. Deve existir uma linha na tabela com os dados do agendamento testado.
@@ -262,7 +262,7 @@ Este plano de teste serve como uma diretriz para assegurar a funcionalidade crí
 2. Utilizar um cliente com dados válidos (nome, email, cpf e telefone) e com um horário agendado.
 3. O teste só pode ser efetuado após 5 minutos de um agendamento, conforme regra de negócio.
 
-> **Obs**: Existe uma API para a realização de agendamentos, a documentação das APIs pode ser encontrada no arquivo APIs.md.
+> **Obs**: Existe uma API para a realização de agendamentos. A documentação das APIs pode ser encontrada no arquivo APIs.md.
 
 ### Passos
 1. Acessar o site de agendamentos (https://www.aminhaclinica.com.br/).
@@ -273,14 +273,14 @@ Este plano de teste serve como uma diretriz para assegurar a funcionalidade crí
 6. Clicar no botão "Entrar".
 7. Clicar no botão de cancelar do card com as informações do agendamento.
 8. Clicar no botão de confirmação.
-9. Realizar uma chamada a API de verificação de horário com os dados do agendamento cancelado.
+9. Realizar uma chamada à API de verificação de horário com os dados do agendamento cancelado.
 
 
 ### Resultado esperado
 1. O card de agendamento deve apresentar as informações corretas relacionadas ao agendamento.
 2. Ao clicar no botão de confirmação, um pop-up deve ser exibido informando que o agendamento foi cancelado.
 3. O card de agendamento não deve mais ser exibido.
-4. Realizar uma chamada a API de verificação de horário e garantir que horário está disponível.
+4. Realizar uma chamada à API de verificação de horário e garantir que horário está disponível.
 5. O retorno da API de verificação de horário deve informar que horário está livre.
 
 ---
@@ -308,7 +308,7 @@ Este plano de teste serve como uma diretriz para assegurar a funcionalidade crí
 ### Resultado esperado
 1. Ao chamar a API de agendamento, um agendamento deve ser efetudado.
 2. Ao clicar no botão de "Agendar Consulta" um pop-up deve aparecer informando que o agendamento não está mais disponível.
-3. Ao clicar no botão de confirmação o cliente deve ser levado de volta a tela de horários.
+3. Ao clicar no botão de confirmação o cliente deve ser levado de volta à tela de horários.
 
 ---
 
@@ -319,7 +319,7 @@ Este plano de teste serve como uma diretriz para assegurar a funcionalidade crí
 2. Utilizar um cliente com dados válidos (nome, email, cpf e telefone) e com um horário agendado.
 3. O teste deve ser efetuado 5 minutos após um agendamento, conforme regra de negócio.
 
-> **Obs**: Existe uma API para a realização de agendamentos, a documentação das APIs pode ser encontrada no arquivo APIs.md.
+> **Obs**: Existe uma API para a realização de agendamentos. A documentação das APIs pode ser encontrada no arquivo APIs.md.
 
 ### Passos
 1. Acessar o site de agendamentos (https://www.aminhaclinica.com.br/).

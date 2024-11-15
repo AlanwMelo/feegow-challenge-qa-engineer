@@ -6,10 +6,12 @@ Library           String
 
 Resource          my_keywords.robot
 
+Suite Teardown    Close All Browsers
+
 *** Variables ***
 ${URL1}                https://minhaclinica.com/agendamento
 ${URL2}                https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica
-${CHROME_OPTIONS}      add_argument('--headless');add_argument('--no-sandbox')
+${CHROME_OPTIONS}
 ${DOCUMENTO}           83934571069
 ${SENHA}               .hAVy445f
 

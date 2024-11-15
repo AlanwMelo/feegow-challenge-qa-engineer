@@ -17,34 +17,25 @@ O objetivo desses testes é garantir que nenhuma alteração no código do site 
 ## Como instalar
 
 1. **Clone o repositório:**
-    ... bash
-    git clone https://github.com/AlanwMelo/feegow-challenge-qa-engineer.git
-    ...
+    `git clone https://github.com/AlanwMelo/feegow-challenge-qa-engineer.git`
 
 2. **Crie um ambiente virtual e ative-o antes de instalar as dependências do projeto:**
-    ... bash
-    python3 -m venv myenv
-    source myenv/bin/activate
-    ...
+    `python3 -m venv myenv`
+    `source myenv/bin/activate`
 
-3. **Instale as seguintes dependências necessárias:**
-    ... bash
-    pip install selenium
-    pip install robotframework
-    pip install robotframework-seleniumlibrary
-    pip install robotframework-requests
-    ...
+3. **Instale as seguintes dependências necessárias:**[
+    `pip install selenium`
+    `pip install robotframework`
+    `pip install robotframework-seleniumlibrary`
+    `pip install robotframework-requests`
 
 ## Execução
 
 - Para executar o projeto basta utilizar o comando no CMD:
-    ... bash
-    robot ./2.automation-tests/alan/agendamento_cancelamento.robot
-    ...
+    `robot ./2.automation-tests/alan/agendamento_cancelamento.robot`
+    
 - Argumentos podem ser passados para o robot da seguinte maneira:
-    ... bash
-    robot --variable CHROME_OPTIONS:"add_argument('--headless') ./2.automation-tests/alan/agendamento_cancelamento.robot
-    ...
+     `robot --variable CHROME_OPTIONS:"add_argument('--headless') ./2.automation-tests/alan/agendamento_cancelamento.robot`
 
 ## Orientações Gerais
 
