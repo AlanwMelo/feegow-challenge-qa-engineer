@@ -1,9 +1,9 @@
 # Sugestões
 Através deste documento vou listar algumas melhorias que acredito que possam ser implementadas para garantir melhor qualidade na execução dos testes. Todas essas sugestões foram baseadas nos testes realizados neste desafio.
 
-1. **Documentação**: A documentação do sistema, quando bem feita, é o melhor ponto de referência para a criação dos testes. Quanto mais acesso a documentação do sistema, melhor a qualidade dos testes criados.
-2. **Ambiente**: Um ambiente de testes onde os análistas de testes tenham total acesso e possam realizar testes exploratórios sem medo de quebrar o sistema é um ponto importante para garantir a qualidade, a possibilidade de interagir direto com o banco, API e o acesso aos logs também se encaixam nesse ponto.
-3. **Padronização dos dados**: Tendo como exemplo o retorno da API real (https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica/filter-schedule?PorEspecialidade=96), onde os dados não são padronizados, ressalto que, sempre que possível, os dados devem ser retornados de maneira padrão, o que facilita os testes e o trabalho dos desenvolvedores, uma única consulta a esta API retorna dados estruturados de maneiras diferentes.
+1. **Documentação**: A documentação do sistema, quando bem feita, é o melhor ponto de referência para a criação dos testes. Quanto mais acesso à documentação do sistema, melhor a qualidade dos testes criados.
+2. **Ambiente**: Um ambiente de testes onde os analistas de testes tenham total acesso e possam realizar testes exploratórios sem medo de quebrar o sistema é um ponto importante para garantir a qualidade. A possibilidade de interagir direto com o banco, API e o acesso aos logs também se encaixam nesse ponto.
+3. **Padronização dos dados**: Tendo como exemplo o retorno da API real (https://components-legacy.feegow.com/index.php/agendamento-online/client/minhaclinica/filter-schedule?PorEspecialidade=96), onde os dados não são padronizados, ressalto que, sempre que possível, os dados devem ser retornados de maneira padrão, o que facilita os testes e o trabalho dos desenvolvedores; uma única consulta a esta API retorna dados estruturados de maneiras diferentes.
 - **Lista**:
     ```json
     "2024-12-10": [
@@ -38,4 +38,4 @@ Através deste documento vou listar algumas melhorias que acredito que possam se
                     "11": "12:00:00"
                 },
     ```
-4. **Exposição de APIs**: Sempre que possível, uma API deve ser exposta aos análistas, evitando a realização de fluxos e2e em casos que eles são premissas para a realização de um teste. Por exemplo: Houve a entrega do BUG que remove o bloqueio do cancelamento de uma consulta agendada nos últimos 5 minutos. A API que realiza efetivamente o agendamento poderia ser chamada para que o testador não precise passar por todo o fluxo de agendamento e ir direto a validação necessária. O fluxo e2e seria validado pela automação.
+4. **Exposição de APIs**: Sempre que possível, uma API deve ser exposta aos analistas, evitando a realização de fluxos e2e nos casos em que eles são premissas para a realização de um teste. Por exemplo: Houve a entrega do BUG que remove o bloqueio do cancelamento de uma consulta agendada nos últimos 5 minutos. A API que realiza efetivamente o agendamento poderia ser chamada para que o testador não precise passar por todo o fluxo de agendamento e ir direto à validação necessária. O fluxo e2e seria validado pela automação.
